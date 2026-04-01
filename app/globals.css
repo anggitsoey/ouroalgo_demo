@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════
+   DESIGN SYSTEM — OURO ALGO
+   Token reference:
+   --primary        Main accent (electric blue)
+   --bg             Page background
+   --surface        Card / panel background
+   --surface2       Subtle background
+   --border         Default border
+   --text           Body text
+   --muted          Secondary text
+   --radius-*       Border radius tokens
+═══════════════════════════════════════════════ */
+
+@layer base {
+  :root {
+    /* ── Accent ── */
+    --primary:       #3B82F6;
+    --primary-light: #60A5FA;
+    --primary-dark:  #2563EB;
+    --primary-dim:   rgba(59, 130, 246, 0.08);
+    --primary-border:rgba(59, 130, 246, 0.22);
+
+    /* ── Light mode surfaces ── */
+    --bg:       #F0F4FF;
+    --surface:  #FFFFFF;
+    --surface2: #E4ECFF;
+    --border:   #C4D4F4;
+    --text:     #080C1A;
+    --muted:    #4A5E8A;
+    --dim:      #8A9EC0;
+
+    /* ── Frosted glass ── */
+    --frosted-bg: rgba(236, 242, 255, 0.85);
+
+    /* ── Radius ── */
+    --r-sm: 2px;
+    --r:    3px;
+    --r-md: 4px;
+    --r-lg: 6px;
+  }
+
+  .dark {
+    --bg:       #0C0C0C;
+    --frosted-bg: rgba(18, 18, 18, 0.88);
+    --surface:  #141414;
+    --surface2: #1A1A1A;
+    --border:   #2E2E2E;
+    --text:     #F0F0F0;
+    --muted:    #A0A0A0;
+    --dim:      #555555;
+  }
+
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    transition: background-color 0.25s ease, color 0.25s ease;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-weight: 600;
+  }
+
+  ::selection {
+    background-color: rgba(0, 200, 150, 0.25);
+    color: var(--text);
+  }
+
+  ::-webkit-scrollbar       { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--primary-dark); border-radius: 2px; }
+}
+
+/* ═══════════════════════════════════════════════
+   COMPONENTS
+═══════════════════════════════════════════════ */
+@layer components {
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5
+           text-[11px] font-medium tracking-[0.12em] uppercase
+           bg-[var(--primary)] text-[#FFFFFF]
+           border border-transparent
+           transition-all duration-150 active:scale-[0.98];
+    border-radius: var(--r-md);
+  }
+  .btn-primary:hover { background: var(--primary-light); }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5
+           text-[11px] font-medium tracking-[0.12em] uppercase
+           bg-transparent text-[var(--muted)]
+           border border-[var(--border)]
+           transition-all duration-150 active:scale-[0.98];
+    border-radius: var(--r-md);
+  }
+  .btn-secondary:hover {
+    border-color: var(--primary-border);
+    color: var(--primary);
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    @apply p-5 transition-all duration-150;
+    border-radius: var(--r-md);
+  }
+  .card:hover {
+    border-color: var(--primary-border);
+  }
+
+  /* ── Cursor glow card ── */
+  .glow-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .glow-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      500px circle at var(--gx, -999px) var(--gy, -999px),
+      rgba(59, 130, 246, 0.13) 0%,
+      rgba(59, 130, 246, 0.04) 40%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: inherit;
+  }
+  .glow-card:hover::before {
+    opacity: 1;
+  }
+  .glow-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Layout ── */
+  .section {
+    @apply py-20 px-4 max-w-6xl mx-auto;
+  }
+
+  /* ── Typography tokens ── */
+  .label-tag {
+    @apply inline-flex items-center gap-1.5
+           text-[11px] tracking-[0.2em] uppercase
+           text-[var(--muted)] font-medium;
+  }
+  .label-tag::before {
+    content: '//';
+    opacity: 0.5;
+  }
+
+  .section-title {
+    color: var(--text);
+    @apply text-3xl md:text-4xl font-medium leading-tight tracking-[-0.02em];
+  }
+
+  .section-sub {
+    color: var(--muted);
+    @apply text-[14px] mt-3 max-w-xl leading-relaxed;
+  }
+
+  /* ── Accent line ── */
+  .accent-line {
+    width: 32px;
+    height: 1px;
+    background: var(--border);
+    @apply my-4;
+  }
+
+  /* ── Stat card ── */
+  .stat-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    @apply p-4 text-center;
+    border-radius: var(--r-md);
+  }
+
+  /* ── Inline code / data chip ── */
+  .chip {
+    @apply inline-flex items-center gap-1
+           text-[10px] tracking-[0.1em] uppercase font-medium
+           px-2 py-0.5;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: var(--r-sm);
+  }
+
+  /* ── Accent gradient text ── */
+  .accent-gradient {
+    background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 50%, #818CF8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Grid overlay (decorative) ── */
+  .grid-overlay {
+    background-image:
+      linear-gradient(var(--border) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, var(--border) 1.5px, transparent 1.5px);
+    background-size: 48px 48px;
+  }
+
+  /* ── Node flow animation ── */
+  .node-flow {
+    background: linear-gradient(to bottom,
+      transparent 0%,
+      var(--primary) 50%,
+      transparent 100%);
+    background-size: 100% 200%;
+    animation: nodeFlow 2s linear infinite;
+  }
+
+  @keyframes nodeFlow {
+    0%   { background-position: 0% 0%; }
+    100% { background-position: 0% 200%; }
+  }
+
+  @keyframes dashFlow {
+    from { stroke-dashoffset: 92; }
+    to   { stroke-dashoffset: 0; }
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.6; transform: scaleX(1); }
+    50%       { opacity: 1;   transform: scaleX(1.08); }
+  }
+
+  @keyframes scrollBob {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+    50%       { transform: translateX(-50%) translateY(6px); opacity: 0.6; }
+  }
+
+  @keyframes scrollDot {
+    0%        { transform: translateY(0); opacity: 1; }
+    60%       { transform: translateY(10px); opacity: 0; }
+    61%       { transform: translateY(0); opacity: 0; }
+    100%      { transform: translateY(0); opacity: 1; }
+  }
+}
