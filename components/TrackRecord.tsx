@@ -22,9 +22,14 @@ export function TrackRecord() {
               <span className="accent-gradient">live & terverifikasi</span>
             </h2>
           </div>
-          <p className="section-sub md:text-right max-w-sm">
-            Semua performa dapat diverifikasi langsung via Myfxbook. Bukan backtest — ini akun live.
-          </p>
+          <a
+            href="https://www.myfxbook.com/members/elborofx/ouro-exponent-algo/11950222"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary inline-flex"
+          >
+            Lihat di Myfxbook →
+          </a>
         </div>
 
         {/* Stats banner card */}
@@ -66,19 +71,6 @@ export function TrackRecord() {
           </div>
         </div>
 
-        {/* Myfxbook embed placeholder */}
-        {/* Myfxbook embed */}
-        <div className="mb-4 overflow-hidden border border-[var(--border)]"
-             style={{ borderRadius: 'var(--r-md)' }}>
-          <iframe
-            src="https://widgets.myfxbook.com/widgets/system-chart.html?id=11950222&chartType=1&bgColor=141414&lineColor=3B82F6&textColor=E8E8E8&gridColor=262626&width=100%25&height=400"
-            width="100%"
-            height="400"
-            frameBorder="0"
-            scrolling="no"
-            style={{ display: 'block' }}
-          />
-        </div>
 
         {/* Disclaimer */}
         <div className="flex items-start gap-2.5 p-3.5 border border-[var(--border)] bg-[var(--surface2)]"

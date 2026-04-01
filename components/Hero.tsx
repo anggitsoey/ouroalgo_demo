@@ -38,6 +38,7 @@ const ecosystem = [
   },
 ]
 
+
 function EcosystemGraph() {
   const [hovered, setHovered] = useState<string | null>(null)
 
@@ -85,7 +86,7 @@ function EcosystemGraph() {
                 </span>
               </div>
 
-              {/* Stat + code */}
+              {/* Code badge */}
               <div className="flex-shrink-0 flex flex-col items-end gap-1">
                 <span
                   className="text-[9px] tracking-[0.2em] font-medium px-2 py-0.5 border"
@@ -99,18 +100,6 @@ function EcosystemGraph() {
                 >
                   {code}
                 </span>
-                <div className="flex items-center gap-1">
-                  <span
-                    className="w-1 h-1 rounded-full"
-                    style={{ background: 'var(--primary)', opacity: isHovered ? 1 : 0.35, transition: 'opacity 0.2s' }}
-                  />
-                  <span
-                    className="text-[10px] tracking-[0.08em]"
-                    style={{ color: isHovered ? 'var(--primary)' : 'var(--dim)', transition: 'color 0.2s ease' }}
-                  >
-                    {stat}
-                  </span>
-                </div>
               </div>
             </div>
           )
@@ -135,11 +124,6 @@ export function Hero() {
       <div className="absolute top-0 left-[13%] right-[13%] h-px pointer-events-none"
            style={{ background: 'linear-gradient(90deg, transparent, var(--primary-border), transparent)' }} />
 
-      {/* Bottom glow animated */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
-           style={{ background: 'linear-gradient(to top, rgba(59,130,246,0.07) 0%, transparent 100%)', animation: 'glowPulse 4s ease-in-out infinite' }} />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-40 pointer-events-none"
-           style={{ background: 'radial-gradient(ellipse at bottom, rgba(59,130,246,0.15) 0%, transparent 70%)', animation: 'glowPulse 4s ease-in-out infinite 0.5s' }} />
 
       <div className="w-full relative">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">

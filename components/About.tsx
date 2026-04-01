@@ -38,17 +38,17 @@ export function About() {
             <p className="label-tag mb-4">About</p>
             <div className="accent-line" />
             <h2 className="section-title mb-5">
-              Bukan sekadar EA,<br />
-              <span className="accent-gradient">ekosistem lengkap</span>
+              Dibangun oleh trader,<br />
+              <span className="accent-gradient">untuk trader.</span>
             </h2>
             <p className="text-[13px] text-[var(--muted)] leading-relaxed mb-4">
-              OURO ALGO lahir dari frustrasi kami sebagai trader: EA yang tidak transparan,
-              signal tanpa track record, edukasi yang tidak berbasis data.
+              Kami trader sebelum kami developer. OURO ALGO lahir dari kebutuhan
+              nyata — sistem yang kami percaya cukup untuk kami gunakan sendiri,
+              dengan uang kami sendiri.
             </p>
             <p className="text-[13px] text-[var(--muted)] leading-relaxed">
-              Kami membangun platform yang ingin kami gunakan sendiri: algoritmik,
-              terukur, dan jujur. Setiap produk yang kami rilis telah melalui proses
-              riset dan backtest yang ketat.
+              Setiap strategi melewati pengujian kuantitatif yang ketat sebelum live.
+              Setiap keputusan berbasis data. Bukan intuisi, bukan spekulasi.
             </p>
           </div>
 
