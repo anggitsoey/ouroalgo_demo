@@ -12,14 +12,31 @@ const navLinks = [
   { label: 'FAQ', href: '#faq' },
 ]
 
+function getNavPadding() {
+  if (typeof window === 'undefined') return '0 13%'
+  const w = window.innerWidth
+  if (w < 640) return '0 16px'
+  if (w < 1024) return '0 32px'
+  return '0 13%'
+}
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [navPadding, setNavPadding] = useState('0 13%')
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
+    const update = () => {
+      setScrolled(window.scrollY > 40)
+      setNavPadding(getNavPadding())
+    }
+    update()
+    window.addEventListener('scroll', update)
+    window.addEventListener('resize', update)
+    return () => {
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
   }, [])
 
   return (
@@ -38,22 +55,19 @@ export function Navbar() {
           boxShadow: '0 4px 24px rgba(0,0,0,0.2)',
         } : {
           height: '56px',
-          padding: '0 13%',
+          padding: navPadding,
         }}
       >
         {/* Logo */}
         <a href="#" className="flex items-center gap-2.5">
-          <div className="w-6 h-6 bg-[var(--primary)] flex items-center justify-center"
-               style={{ borderRadius: 'var(--r-sm)' }}>
-            <span className="text-[#080C09] font-medium text-[9px] tracking-widest">OA</span>
-          </div>
+          <img src="/logo.svg" alt="OURO ALGO" className="w-6 h-6" />
           <span className="text-[13px] font-medium tracking-[0.08em] text-[var(--text)]">
             OURO <span style={{ color: 'var(--primary)' }}>ALGO</span>
           </span>
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -69,15 +83,15 @@ export function Navbar() {
         </div>
 
         {/* Right */}
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-2">
           <ThemeToggle />
           <a href="#pricing" className="btn-primary text-[10px] py-2 px-4">
             Lihat Paket
           </a>
         </div>
 
-        {/* Mobile */}
-        <div className="flex md:hidden items-center gap-2">
+        {/* Mobile & Tablet */}
+        <div className="flex lg:hidden items-center gap-2">
           <ThemeToggle />
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -89,10 +103,10 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile & Tablet Menu */}
       {menuOpen && (
         <div
-          className="md:hidden mt-2 mx-4 overflow-hidden"
+          className="lg:hidden mt-2 mx-4 overflow-hidden"
           style={{
             background: 'var(--frosted-bg)',
             backdropFilter: 'blur(24px)',

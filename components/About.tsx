@@ -29,9 +29,10 @@ const pillars = [
 
 export function About() {
   return (
-    <section id="about" className="py-20 px-[13%]">
+    <section id="about" className="py-20 px-4 sm:px-8 lg:px-[13%]">
       <div>
-        <div className="grid md:grid-cols-[1fr_1.4fr] gap-12 items-start">
+        {/* Mobile/tablet: stack. Desktop: side by side */}
+        <div className="flex flex-col lg:grid lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-12 lg:items-start pt-0">
 
           {/* Left */}
           <div>
@@ -52,8 +53,8 @@ export function About() {
             </p>
           </div>
 
-          {/* Right: pillars */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {/* Pillars */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:pt-[72px]">
             {pillars.map(({ icon: Icon, code, title, desc }) => (
               <div key={code} className="card glow-card group">
                 <div className="flex items-start justify-between mb-4">

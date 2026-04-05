@@ -9,7 +9,7 @@ const stats = [
 
 export function TrackRecord() {
   return (
-    <section id="track-record" className="py-20 px-[13%]">
+    <section id="track-record" className="py-20 px-4 sm:px-8 lg:px-[13%]">
       <div>
 
         {/* Header */}
@@ -41,10 +41,10 @@ export function TrackRecord() {
             border: '1px solid var(--border)',
           }}
         >
-          <div className="relative grid md:grid-cols-[1fr_3fr] gap-0">
+          <div className="relative grid lg:grid-cols-[1fr_3fr] gap-0">
 
             {/* Left — identity */}
-            <div className="p-8 flex flex-col justify-center gap-3 border-r border-[var(--border)]">
+            <div className="p-6 flex flex-col justify-center gap-3 border-b lg:border-b-0 lg:border-r border-[var(--border)]">
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1 w-fit"
                    style={{ background: 'var(--primary-dim)', borderRadius: 'var(--r-sm)', border: '1px solid var(--primary-border)' }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] animate-pulse" />
@@ -55,14 +55,17 @@ export function TrackRecord() {
             </div>
 
             {/* Right — stats grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4">
+            <div className="grid grid-cols-2 lg:grid-cols-4">
               {stats.map(({ value, label, sub }, i) => (
                 <div
                   key={label}
-                  className="p-8 flex flex-col justify-center gap-1.5"
-                  style={{ borderRight: i < stats.length - 1 ? '1px solid var(--border)' : 'none' }}
+                  className="p-6 flex flex-col justify-center gap-1.5"
+                  style={{
+                    borderRight: (i === 0 || i === 2) ? '1px solid var(--border)' : 'none',
+                    borderBottom: i < 2 ? '1px solid var(--border)' : 'none',
+                  }}
                 >
-                  <p className="text-[36px] font-bold text-[var(--text)] tracking-tight leading-none">{value}</p>
+                  <p className="text-[32px] font-bold text-[var(--text)] tracking-tight leading-none">{value}</p>
                   <p className="text-[14px] font-medium text-[var(--text)]">{label}</p>
                   <p className="text-[12px] text-[var(--muted)]">{sub}</p>
                 </div>

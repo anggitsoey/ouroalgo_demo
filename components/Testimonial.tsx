@@ -104,7 +104,7 @@ export function Testimonial() {
     <section id="testimonial" className="py-20 bg-[var(--surface2)]">
 
       {/* Header */}
-      <div className="px-[13%] mb-10 pb-8 border-b border-[var(--border)] flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div className="px-4 sm:px-8 lg:px-[13%] mb-10 pb-8 border-b border-[var(--border)] flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <p className="label-tag mb-4">Testimonials</p>
           <div className="accent-line" />

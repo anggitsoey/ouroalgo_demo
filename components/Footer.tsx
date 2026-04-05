@@ -26,7 +26,7 @@ export function Footer() {
 
       {/* CTA row */}
       <div className="border-b border-[var(--border)]">
-        <div className="px-[13%] py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="px-4 sm:px-8 lg:px-[13%] py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
             <p className="text-[12px] tracking-[0.2em] uppercase text-[var(--muted)] mb-2">// get started</p>
             <h3 className="text-xl font-medium text-[var(--text)] tracking-[-0.01em] mb-1">
@@ -47,16 +47,13 @@ export function Footer() {
       </div>
 
       {/* Main */}
-      <div className="px-[13%] py-10">
+      <div className="px-4 sm:px-8 lg:px-[13%] py-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
 
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-6 h-6 bg-[var(--primary)] flex items-center justify-center"
-                   style={{ borderRadius: 'var(--r-sm)' }}>
-                <span className="text-[#080C09] font-medium text-[9px] tracking-widest">OA</span>
-              </div>
+              <img src="/logo.svg" alt="OURO ALGO" className="w-6 h-6" />
               <span className="text-[13px] font-medium tracking-[0.08em]">
                 OURO <span style={{ color: 'var(--primary)' }}>ALGO</span>
               </span>

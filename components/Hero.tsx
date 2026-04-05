@@ -43,7 +43,7 @@ function EcosystemGraph() {
   const [hovered, setHovered] = useState<string | null>(null)
 
   return (
-    <div className="select-none w-[440px]">
+    <div className="select-none w-full lg:w-[440px] lg:min-w-[440px]">
       <div className="flex flex-col gap-3">
         {ecosystem.map(({ code, label, desc, stat, icon: Icon }) => {
           const isHovered = hovered === code
@@ -111,7 +111,7 @@ function EcosystemGraph() {
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-[13%] pt-14 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-center px-4 sm:px-8 lg:px-[13%] pt-14 overflow-hidden">
       {/* Grid background with round fade */}
       <div className="absolute inset-0 pointer-events-none" style={{
         maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)',
@@ -126,10 +126,10 @@ export function Hero() {
 
 
       <div className="w-full relative">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 lg:gap-16">
 
           {/* Left — copy */}
-          <div className="min-w-0 max-w-xl">
+          <div className="w-full lg:min-w-0 lg:max-w-xl">
 
             {/* Status indicator */}
             <div className="inline-flex items-center gap-2 mb-8 px-3 py-1.5 border border-[var(--primary-border)] bg-[var(--primary-dim)]"
@@ -169,7 +169,7 @@ export function Hero() {
           </div>
 
           {/* Right — Ecosystem graph */}
-          <div className="flex-shrink-0 overflow-hidden">
+          <div className="w-full lg:w-auto lg:flex-shrink-0 overflow-hidden">
             <p className="text-[9px] tracking-[0.2em] uppercase text-[var(--muted)] mb-4">// ekosistem</p>
             <EcosystemGraph />
           </div>
@@ -177,8 +177,8 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      {/* Scroll indicator — desktop only */}
+      <div className="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
            style={{ animation: 'scrollBob 2.5s ease-in-out infinite' }}>
         <span className="text-[9px] tracking-[0.3em] uppercase text-[var(--muted)]">scroll</span>
         {/* Mouse outline */}

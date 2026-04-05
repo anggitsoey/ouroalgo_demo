@@ -12,7 +12,7 @@ const BUNDLES = [
     id: 'starter',
     code: 'B-01',
     name: 'Starter',
-    tagline: 'EA + Signal 3 bulan',
+    tagline: 'OEA One-time + Signal VIP 3 bln',
     price: 1499000,
     original: 2896000,
     saving: 48,
@@ -26,32 +26,32 @@ const BUNDLES = [
     id: 'growth',
     code: 'B-02',
     name: 'Growth',
-    tagline: 'EA + Signal + Edukasi tahunan',
-    price: 3999000,
-    original: 6697000,
-    saving: 40,
+    tagline: 'OEA One-time + Signal VIP Thn + Edu Membership Thn',
+    price: 3699000,
+    original: 6047000,
+    saving: 39,
     featured: true,
     includes: [
       'OEA One-time Purchase',
       'Signal VIP Tahunan',
-      'Membership Edukasi Tahunan',
+      'Edu Membership Tahunan',
     ],
   },
   {
     id: 'full',
     code: 'B-03',
     name: 'Full Access',
-    tagline: 'Semua produk. Satu harga.',
-    price: 5999000,
-    original: 9196000,
-    saving: 35,
+    tagline: 'Growth + Research Premium Thn',
+    price: 5699000,
+    original: 7897000,
+    saving: 28,
     featured: false,
     premium: true,
     includes: [
       'OEA One-time Purchase',
       'Signal VIP Tahunan',
-      'Membership Edukasi Tahunan',
-      'Algo Research Premium Tahunan',
+      'Edu Membership Tahunan',
+      'Research Premium Tahunan',
     ],
   },
 ]
@@ -61,33 +61,33 @@ const INDIVIDUAL = [
     area: 'Expert Advisor',
     code: 'EA',
     options: [
-      { id: 'ea-oto', area: 'EA', name: 'OEA One-time', price: 1699000, period: 'sekali bayar', note: 'Lisensi permanen' },
-      { id: 'ea-sub', area: 'EA', name: 'OEA Subscription', price: 199000, period: '/ bulan', note: 'Akses versi terbaru' },
+      { id: 'ea-oto', area: 'EA', name: 'One-time Purchase', price: 1699000, period: 'sekali bayar', note: 'Licence key per akun MT4/MT5. Bayar sekali, pakai selamanya.' },
+      { id: 'ea-sub', area: 'EA', name: 'Monthly Subscription', price: 269000, period: '/ bulan', note: 'Selalu akses versi terbaru. Bisa cancel kapan saja.' },
     ],
   },
   {
-    area: 'Signal VIP',
+    area: 'Signal & Copy Trading',
     code: 'SIG',
     options: [
-      { id: 'sig-bln', area: 'SIG', name: 'Signal Bulanan', price: 399000, period: '/ bulan', note: 'XAUUSD harian' },
-      { id: 'sig-thn', area: 'SIG', name: 'Signal Tahunan', price: 2999000, period: '/ tahun', note: 'Hemat ~37%' },
+      { id: 'sig-bln', area: 'SIG', name: 'Monthly Subscription', price: 399000, period: '/ bulan', note: 'Signal XAUUSD harian via Telegram. Entry, SL, dan TP disertakan.' },
+      { id: 'sig-thn', area: 'SIG', name: 'Yearly Subscription', price: 2499000, period: '/ tahun', note: 'Semua fitur bulanan. Hemat ~48% dibanding berlangganan bulanan.' },
     ],
   },
   {
     area: 'Kelas & Edukasi',
     code: 'EDU',
     options: [
-      { id: 'edu-kls', area: 'EDU', name: 'Per Kelas', price: 299000, period: '/ kelas', note: 'Akses seumur hidup' },
-      { id: 'edu-bln', area: 'EDU', name: 'Membership Bulanan', price: 249000, period: '/ bulan', note: 'Semua kelas' },
-      { id: 'edu-thn', area: 'EDU', name: 'Membership Tahunan', price: 1999000, period: '/ tahun', note: 'Hemat ~33%' },
+      { id: 'edu-kls', area: 'EDU', name: 'One-time Purchase', price: 269000, period: '/ kelas', note: 'Akses materi satu modul seumur hidup. Cocok untuk topik spesifik.' },
+      { id: 'edu-bln', area: 'EDU', name: 'Monthly Subscription', price: 249000, period: '/ bulan', note: 'Akses semua kelas aktif dan kelas baru yang dirilis.' },
+      { id: 'edu-thn', area: 'EDU', name: 'Yearly Subscription', price: 1850000, period: '/ tahun', note: 'Akses penuh semua kelas selama setahun. Hemat ~38% vs bulanan.' },
     ],
   },
   {
     area: 'Algo Research',
     code: 'RSC',
     options: [
-      { id: 'rsc-bln', area: 'RSC', name: 'Research Bulanan', price: 299000, period: '/ bulan', note: '.ipynb + PDF' },
-      { id: 'rsc-thn', area: 'RSC', name: 'Research Tahunan', price: 2499000, period: '/ tahun', note: 'Hemat ~30%' },
+      { id: 'rsc-bln', area: 'RSC', name: 'Monthly Subscription', price: 269000, period: '/ bulan', note: 'Laporan riset algoritmik bulanan dalam format .ipynb dan PDF.' },
+      { id: 'rsc-thn', area: 'RSC', name: 'Yearly Subscription', price: 1850000, period: '/ tahun', note: '12 laporan riset sepanjang tahun. Hemat ~43% vs bulanan.' },
     ],
   },
 ]
@@ -121,7 +121,7 @@ export function PricingPreview() {
   const isSelected = (id: string) => selections.some((s) => s.id === id)
 
   return (
-    <section id="pricing" className="py-20 px-[13%] bg-[var(--surface2)]">
+    <section id="pricing" className="py-20 px-4 sm:px-8 lg:px-[13%] bg-[var(--surface2)]">
       <div>
 
         {/* Header */}
@@ -256,17 +256,17 @@ export function PricingPreview() {
               </button>
             </div>
 
-            <div className="grid md:grid-cols-[1fr_300px]">
+            <div className="grid lg:grid-cols-[1fr_300px]">
 
               {/* LEFT: Product picker */}
-              <div className="p-5 flex flex-col gap-6 border-r border-[var(--border)]">
+              <div className="p-5 flex flex-col gap-6 border-b lg:border-b-0 lg:border-r border-[var(--border)]">
                 {INDIVIDUAL.map(({ area, code, options }) => (
                   <div key={code}>
                     <div className="flex items-center gap-2 mb-2.5">
                       <span className="chip">{code}</span>
                       <span className="text-[13px] font-medium text-[var(--text)]">{area}</span>
                     </div>
-                    <div className="grid grid-cols-3 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                       {options.map((opt) => {
                         const selected = isSelected(opt.id)
                         return (
@@ -282,12 +282,12 @@ export function PricingPreview() {
                                 <Check size={9} color="#080C09" />
                               </div>
                             )}
-                            <p className="text-[12px] text-[var(--muted)] mb-2">{opt.name}</p>
+                            <p className="text-[14px] font-medium text-[var(--text)] mb-2">{opt.name}</p>
                             <p className="text-[18px] font-medium text-[var(--text)] tracking-[-0.02em] leading-none">
                               {fmt(opt.price)}
                             </p>
-                            <p className="text-[12px] text-[var(--muted)] mt-0.5">{opt.period}</p>
-                            <p className="text-[10px] mt-2" style={{ color: 'var(--primary)' }}>{opt.note}</p>
+                            <p className="text-[12px] mt-0.5" style={{ color: 'var(--primary)' }}>{opt.period}</p>
+                            <p className="text-[11px] text-[var(--muted)] mt-2 leading-relaxed">{opt.note}</p>
                           </div>
                         )
                       })}

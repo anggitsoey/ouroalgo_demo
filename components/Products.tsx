@@ -41,7 +41,7 @@ const products = [
 
 export function Products() {
   return (
-    <section id="products" className="py-20 px-[13%] bg-[var(--surface2)]">
+    <section id="products" className="py-20 px-4 sm:px-8 lg:px-[13%] bg-[var(--surface2)]">
       <div>
 
         {/* Header */}
@@ -78,7 +78,7 @@ export function Products() {
               <p className="text-[14px] text-[var(--muted)] leading-relaxed mb-5 flex-1">{desc}</p>
 
               <div className="border-t border-[var(--border)] pt-4 mb-5">
-                <ul className="grid grid-cols-2 gap-y-1.5">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-1.5">
                   {features.map((f) => (
                     <li key={f} className="flex items-center gap-1.5 text-[13px] text-[var(--muted)]">
                       <span className="w-1 h-1 flex-shrink-0 bg-[var(--dim)]" style={{ borderRadius: '50%' }} />

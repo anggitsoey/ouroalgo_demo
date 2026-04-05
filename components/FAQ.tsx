@@ -76,7 +76,7 @@ function FAQItem({ id, q, a }: { id: string; q: string; a: string }) {
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-20 px-[13%]">
+    <section id="faq" className="py-20 px-4 sm:px-8 lg:px-[13%]">
       <div>
 
         <div className="mb-10 pb-8 border-b border-[var(--border)]">
