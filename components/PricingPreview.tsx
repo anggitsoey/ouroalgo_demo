@@ -1,7 +1,20 @@
 'use client'
 
-import { useState } from 'react'
-import { ArrowRight, Check, X } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { ArrowRight, Check, X, Timer } from 'lucide-react'
+
+const TARGET_DATE = new Date('2026-04-10T09:00:00+07:00').getTime()
+function calcCountdown() {
+  const diff = TARGET_DATE - Date.now()
+  if (diff <= 0) return null
+  return {
+    days:    Math.floor(diff / 86400000),
+    hours:   Math.floor((diff % 86400000) / 3600000),
+    minutes: Math.floor((diff % 3600000) / 60000),
+    seconds: Math.floor((diff % 60000) / 1000),
+  }
+}
+function pad(n: number) { return String(n).padStart(2, '0') }
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -17,6 +30,7 @@ const BUNDLES = [
     original: 2896000,
     saving: 48,
     featured: false,
+    badge: null,
     includes: [
       'OEA One-time Purchase',
       'Signal VIP 3 bulan',
@@ -31,6 +45,7 @@ const BUNDLES = [
     original: 6047000,
     saving: 39,
     featured: true,
+    badge: 'Recommended',
     includes: [
       'OEA One-time Purchase',
       'Signal VIP Tahunan',
@@ -47,6 +62,7 @@ const BUNDLES = [
     saving: 28,
     featured: false,
     premium: true,
+    badge: 'Best Value',
     includes: [
       'OEA One-time Purchase',
       'Signal VIP Tahunan',
@@ -104,6 +120,12 @@ function fmt(n: number) {
 export function PricingPreview() {
   const [customOpen, setCustomOpen] = useState(false)
   const [selections, setSelections] = useState<Selection[]>([])
+  const [countdown, setCountdown] = useState(calcCountdown)
+
+  useEffect(() => {
+    const id = setInterval(() => setCountdown(calcCountdown()), 1000)
+    return () => clearInterval(id)
+  }, [])
 
   const toggle = (opt: { id: string; area: string; name: string; price: number; period: string }) => {
     setSelections((prev) => {
@@ -125,7 +147,7 @@ export function PricingPreview() {
       <div>
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-8 border-b border-[var(--border)]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
           <div>
             <p className="label-tag mb-4">Pricing</p>
             <div className="accent-line" />
@@ -139,29 +161,93 @@ export function PricingPreview() {
           </p>
         </div>
 
+        {/* Countdown */}
+        {countdown && (
+          <div
+            className="mb-0 border overflow-hidden"
+            style={{ borderRadius: 'var(--r-lg)', background: 'var(--surface)', borderColor: 'var(--border)' }}
+          >
+            <div className="flex flex-col sm:flex-row items-center px-6 py-5 gap-6">
+              {/* Left: label */}
+              <div className="flex flex-col flex-1 min-w-0">
+                <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] mb-1">Launch Batch 2</span>
+                <p className="text-[15px] font-medium text-[var(--text)] leading-snug">
+                  Pendaftaran dibuka
+                </p>
+                <p className="text-[14px] font-bold" style={{ color: 'var(--primary)' }}>
+                  10 April 2026 · 09.00 WIB
+                </p>
+              </div>
+
+              {/* Right: digits — no separators */}
+              <div className="flex items-center gap-3 flex-shrink-0">
+                {([
+                  { val: countdown.days,    label: 'Hari' },
+                  { val: countdown.hours,   label: 'Jam' },
+                  { val: countdown.minutes, label: 'Menit' },
+                  { val: countdown.seconds, label: 'Detik' },
+                ] as const).map(({ val, label }, i) => (
+                  <div key={label} className="flex items-center gap-3">
+                    {i > 0 && (
+                      <span className="text-[28px] font-light leading-none -mt-3" style={{ color: 'var(--muted)' }}>:</span>
+                    )}
+                    <div className="flex flex-col items-center gap-0.5">
+                      <span
+                        className="text-[38px] sm:text-[44px] font-bold tabular-nums font-mono leading-none"
+                        style={{ color: 'var(--text)' }}
+                      >
+                        {pad(val)}
+                      </span>
+                      <span className="text-[9px] tracking-[0.2em] uppercase" style={{ color: 'var(--muted)' }}>
+                        {label}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Separator below countdown */}
+        <div className="border-b border-[var(--border)] mb-8 mt-8" />
+
         {/* Bundle Grid — full width, 4 cols */}
         <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-3 mb-3">
-          {BUNDLES.map(({ id, code, name, tagline, price, original, saving, featured, includes, ...rest }) => {
+          {BUNDLES.map(({ id, code, name, tagline, price, original, saving, featured, badge, includes, ...rest }) => {
             const isPremium = (rest as any).premium === true
+            const borderColor = featured ? 'var(--primary-border)' : isPremium ? AMBER_BORDER : 'var(--border)'
             return (
-            <div
-              key={id}
-              className="glow-card relative flex flex-col border bg-[var(--surface)] transition-colors"
-              style={{
-                borderRadius: 'var(--r-md)',
-                borderColor: featured
-                  ? 'var(--primary-border)'
-                  : isPremium
-                  ? AMBER_BORDER
-                  : 'var(--border)',
-              }}
-            >
-              {featured && (
-                <div className="h-px bg-[var(--primary)] absolute top-0 left-0 right-0" />
+            <div key={id} className="flex flex-col">
+
+              {/* Badge OR spacer — FIXED height so all cards align */}
+              {badge ? (
+                <div
+                  className="flex items-center justify-center text-[9px] font-medium tracking-[0.2em] uppercase"
+                  style={{
+                    height: 28,
+                    color: isPremium ? AMBER : 'var(--primary)',
+                    background: isPremium ? 'rgba(245,158,11,0.08)' : 'var(--primary-dim)',
+                    border: `1px solid ${borderColor}`,
+                    borderBottom: 'none',
+                    borderRadius: 'var(--r-md) var(--r-md) 0 0',
+                  }}
+                >
+                  {badge}
+                </div>
+              ) : (
+                <div style={{ height: 28 }} />
               )}
-              {isPremium && (
-                <div className="h-px absolute top-0 left-0 right-0" style={{ background: AMBER }} />
-              )}
+
+              <div
+                className="glow-card relative flex flex-col border bg-[var(--surface)] transition-colors overflow-hidden flex-1 -mt-px"
+                style={{
+                  borderColor,
+                  borderRadius: badge ? '0 0 var(--r-md) var(--r-md)' : 'var(--r-md)',
+                }}
+              >
+              {!badge && featured && <div className="h-px bg-[var(--primary)] absolute top-0 left-0 right-0" />}
+              {!badge && isPremium && <div className="h-px absolute top-0 left-0 right-0" style={{ background: AMBER }} />}
               <div className="p-4 flex flex-col flex-1">
                 <div className="mb-4">
                   <span className="text-[12px] text-[var(--muted)] tracking-[0.1em]">{code}</span>
@@ -197,13 +283,16 @@ export function PricingPreview() {
                   Mulai {name} <ArrowRight size={11} />
                 </button>
               </div>
+              </div>
             </div>
           )})}
 
           {/* Custom Card */}
+          <div className="flex flex-col">
+          <div style={{ height: 28 }} />
           <div
             onClick={() => { setCustomOpen(!customOpen); if (!customOpen) reset() }}
-            className={`relative flex flex-col border border-dashed cursor-pointer transition-colors
+            className={`relative flex flex-col border border-dashed cursor-pointer transition-colors flex-1 -mt-px
               ${customOpen
                 ? 'border-[var(--primary)] bg-[var(--primary-dim)]'
                 : 'border-[var(--border)] bg-[var(--surface)] hover:border-[var(--primary-border)]'
@@ -237,6 +326,7 @@ export function PricingPreview() {
                 {customOpen ? 'Tutup' : 'Buat Custom'} <ArrowRight size={11} />
               </div>
             </div>
+          </div>
           </div>
         </div>
 

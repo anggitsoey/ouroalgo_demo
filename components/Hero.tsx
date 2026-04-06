@@ -14,7 +14,7 @@ const ecosystem = [
   },
   {
     code: 'SIG',
-    label: 'Signal & Copy',
+    label: 'Signal & Copy Trading',
     desc: 'Sinyal live terverifikasi',
     detail: 'Entry & exit berbasis analisis algoritmik, dikirim real-time ke Telegram.',
     icon: Radio,

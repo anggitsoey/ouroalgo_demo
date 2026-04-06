@@ -9,6 +9,9 @@ const products = [
     desc: 'EA berbasis algoritma yang berjalan 24/5 di MetaTrader. Dioptimasi dengan data historis bertahun-tahun dan terus diperbarui.',
     features: ['Licence key per akun MT', 'Backtest report tersedia', 'Update otomatis', 'Preset siap pakai'],
     href: '#pricing',
+    thumbnail: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=700&q=80', // dark code monitor
+    imgFit: 'cover' as const,
+    imgPosition: 'center',
   },
   {
     icon: Radio,
@@ -18,6 +21,9 @@ const products = [
     desc: 'Signal entry/exit berbasis analisis algoritmik, dikirim langsung ke Telegram. Cocok untuk trader yang ingin belajar sambil copy.',
     features: ['Signal real-time via Telegram', 'Statistik performa bulanan', 'History signal lengkap', 'Panduan copy trading'],
     href: '#pricing',
+    thumbnail: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=700&q=80', // white-toned trading / market data
+    imgFit: 'cover' as const,
+    imgPosition: 'center',
   },
   {
     icon: GraduationCap,
@@ -27,6 +33,9 @@ const products = [
     desc: 'Kurikulum terstruktur dari dasar hingga pengembangan strategi algoritmik sendiri. Pendekatan data-driven.',
     features: ['Video on-demand', 'Materi PDF & worksheet', 'Kelas baru tiap bulan', 'Certificate of completion'],
     href: '#pricing',
+    thumbnail: 'https://images.unsplash.com/photo-1650661926447-9efb2610f64c?w=700&q=80',
+    imgFit: 'cover' as const,
+    imgPosition: 'center',
   },
   {
     icon: FlaskConical,
@@ -36,6 +45,9 @@ const products = [
     desc: 'Laporan riset algoritmik mendalam dalam format Jupyter Notebook dan PDF. Untuk quant trader dan developer strategi.',
     features: ['Download .ipynb & PDF', 'Riset original', 'Archive laporan lama', 'Metode & dataset terbuka'],
     href: '#pricing',
+    thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80', // data analytics dashboard
+    imgFit: 'cover' as const,
+    imgPosition: 'center',
   },
 ]
 
@@ -61,8 +73,28 @@ export function Products() {
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 gap-3">
-          {products.map(({ icon: Icon, code, tag, title, desc, features, href }) => (
-            <div key={code} className="card glow-card group flex flex-col">
+          {products.map(({ icon: Icon, code, tag, title, desc, features, href, thumbnail, imgFit, imgPosition }) => (
+            <div key={code} className="card glow-card group flex flex-col relative overflow-hidden">
+
+              {/* Background thumbnail — right side with fade */}
+              <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+                <img
+                  src={thumbnail}
+                  alt=""
+                  className="absolute right-0 top-0 h-full w-[75%] grayscale opacity-[0.14]"
+                  style={{
+                    objectFit: imgFit,
+                    objectPosition: imgPosition,
+                  }}
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: 'linear-gradient(to right, var(--surface) 22%, color-mix(in srgb, var(--surface) 90%, transparent) 35%, color-mix(in srgb, var(--surface) 68%, transparent) 50%, color-mix(in srgb, var(--surface) 38%, transparent) 65%, color-mix(in srgb, var(--surface) 12%, transparent) 78%, transparent 90%)' }}
+                />
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10 flex flex-col flex-1">
               <div className="flex items-start justify-between mb-5">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 flex items-center justify-center border border-[var(--border)] bg-[var(--surface2)]"
@@ -95,6 +127,7 @@ export function Products() {
                 Lihat Paket
                 <ArrowRight size={12} className="group-hover/link:translate-x-0.5 transition-transform" />
               </a>
+              </div>{/* end content */}
             </div>
           ))}
         </div>

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
-import { ThemeToggle } from './ThemeToggle'
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -84,7 +83,6 @@ export function Navbar() {
 
         {/* Right */}
         <div className="hidden lg:flex items-center gap-2">
-          <ThemeToggle />
           <a href="#pricing" className="btn-primary text-[10px] py-2 px-4">
             Lihat Paket
           </a>
@@ -92,7 +90,6 @@ export function Navbar() {
 
         {/* Mobile & Tablet */}
         <div className="flex lg:hidden items-center gap-2">
-          <ThemeToggle />
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="w-8 h-8 flex items-center justify-center border border-[var(--border)] text-[var(--muted)]"

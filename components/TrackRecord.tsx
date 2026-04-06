@@ -1,10 +1,27 @@
-import { AlertTriangle } from 'lucide-react'
+import { AlertTriangle, Download, FileText } from 'lucide-react'
 
 const stats = [
-  { value: '68.4%', label: 'Win Rate', sub: 'avg 24 bulan' },
-  { value: '2.31',  label: 'Profit Factor', sub: 'reward/risk ratio' },
-  { value: '8.2%',  label: 'Max Drawdown', sub: 'peak drawdown' },
-  { value: '24+',   label: 'Live Months', sub: 'track record aktif' },
+  { value: '75.85%', label: 'Win Rate',      sub: '443 trades · 2020–2025' },
+  { value: '1.94',   label: 'Profit Factor', sub: 'reward/risk ratio' },
+  { value: '17.41%', label: 'Max Drawdown',  sub: 'equity drawdown' },
+  { value: '3.15',   label: 'Sharpe Ratio',  sub: 'risk-adjusted return' },
+]
+
+// Divider classes per index: works for both 2-col mobile & 4-col desktop
+const statBorder = [
+  'border-r border-b lg:border-b-0 border-[var(--border)]',      // i=0
+  'border-b lg:border-b-0 lg:border-r border-[var(--border)]',   // i=1
+  'border-r border-[var(--border)]',                              // i=2
+  '',                                                             // i=3
+]
+
+const DRIVE_FOLDER = 'https://drive.google.com/drive/folders/1OCQATdnrRHqapOfOrqVhlA5qoIPfUG_F?usp=drive_link'
+
+const backtests = [
+  { deposit: '$200',   label: 'Initial Deposit $200',   file: DRIVE_FOLDER, period: '2020 – 2025' },
+  { deposit: '$500',   label: 'Initial Deposit $500',   file: DRIVE_FOLDER, period: '2020 – 2025' },
+  { deposit: '$1,000', label: 'Initial Deposit $1,000', file: DRIVE_FOLDER, period: '2020 – 2025' },
+  { deposit: '$5,000', label: 'Initial Deposit $5,000', file: DRIVE_FOLDER, period: '2020 – 2025' },
 ]
 
 export function TrackRecord() {
@@ -23,7 +40,7 @@ export function TrackRecord() {
             </h2>
           </div>
           <a
-            href="https://www.myfxbook.com/members/elborofx/ouro-exponent-algo/11950222"
+            href="/maintenance"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary inline-flex"
@@ -34,7 +51,7 @@ export function TrackRecord() {
 
         {/* Stats banner card */}
         <div
-          className="relative overflow-hidden mb-6"
+          className="relative overflow-hidden mb-3"
           style={{
             borderRadius: 'var(--r-lg)',
             background: 'var(--surface)',
@@ -59,11 +76,7 @@ export function TrackRecord() {
               {stats.map(({ value, label, sub }, i) => (
                 <div
                   key={label}
-                  className="p-6 flex flex-col justify-center gap-1.5"
-                  style={{
-                    borderRight: (i === 0 || i === 2) ? '1px solid var(--border)' : 'none',
-                    borderBottom: i < 2 ? '1px solid var(--border)' : 'none',
-                  }}
+                  className={`p-6 flex flex-col justify-center gap-1.5 ${statBorder[i]}`}
                 >
                   <p className="text-[32px] font-bold text-[var(--text)] tracking-tight leading-none">{value}</p>
                   <p className="text-[14px] font-medium text-[var(--text)]">{label}</p>
@@ -74,6 +87,36 @@ export function TrackRecord() {
           </div>
         </div>
 
+        {/* Backtest Downloads */}
+        <div className="mb-3" style={{ border: '1px solid var(--border)', borderRadius: 'var(--r-lg)', overflow: 'hidden', background: 'var(--surface)' }}>
+          {/* Label */}
+          <div className="px-5 py-3 border-b border-[var(--border)]">
+            <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)]">// backtest report — OuroExponentAlgo v1.0</span>
+          </div>
+
+          {/* Row list */}
+          {backtests.map(({ deposit, label, file, period }, i) => (
+            <a
+              key={deposit}
+              href={file}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center justify-between gap-4 px-5 py-3.5 hover:bg-[var(--surface2)] transition-colors group ${i < backtests.length - 1 ? 'border-b border-[var(--border)]' : ''}`}
+            >
+              <div className="flex items-center gap-3">
+                <FileText size={13} className="flex-shrink-0" style={{ color: 'var(--muted)' }} />
+                <div>
+                  <span className="text-[13px] font-medium text-[var(--text)]">{label}</span>
+                  <span className="text-[12px] text-[var(--muted)] ml-3">Backtest Report · {period}</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-1.5 text-[12px] font-medium group-hover:gap-2 transition-all" style={{ color: 'var(--primary)' }}>
+                Download
+                <Download size={12} className="group-hover:translate-y-0.5 transition-transform" />
+              </div>
+            </a>
+          ))}
+        </div>
 
         {/* Disclaimer */}
         <div className="flex items-start gap-2.5 p-3.5 border border-[var(--border)] bg-[var(--surface2)]"
