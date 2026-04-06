@@ -99,16 +99,8 @@ export function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2.5 px-3 py-2 border border-[var(--border)] bg-[var(--surface2)] transition-all"
+                  className="group inline-flex items-center gap-2.5 px-3 py-2 border border-[var(--border)] bg-[var(--surface2)] hover:border-[var(--primary-border)] hover:bg-[var(--primary-dim)] transition-all"
                   style={{ borderRadius: 'var(--r-md)' }}
-                  onMouseEnter={e => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--primary-border)'
-                    ;(e.currentTarget as HTMLElement).style.background = 'var(--primary-dim)'
-                  }}
-                  onMouseLeave={e => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--border)'
-                    ;(e.currentTarget as HTMLElement).style.background = 'var(--surface2)'
-                  }}
                 >
                   <span className="text-[var(--muted)] group-hover:text-[var(--primary)] transition-colors flex-shrink-0">
                     {icon}
