@@ -92,24 +92,23 @@ export function Footer() {
             </p>
 
             {/* Social links */}
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3">
               {SOCIAL.map(({ label, sub, href, icon }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2.5 px-3 py-2 border border-[var(--border)] bg-[var(--surface2)] hover:border-[var(--primary-border)] hover:bg-[var(--primary-dim)] transition-all"
-                  style={{ borderRadius: 'var(--r-md)' }}
+                  className="group inline-flex items-center gap-2.5 transition-colors"
                 >
                   <span className="text-[var(--muted)] group-hover:text-[var(--primary)] transition-colors flex-shrink-0">
                     {icon}
                   </span>
                   <span className="flex flex-col">
-                    <span className="text-[11px] font-medium tracking-[0.04em] text-[var(--text)] group-hover:text-[var(--primary)] transition-colors leading-none mb-0.5">
+                    <span className="text-[13px] text-[var(--muted)] group-hover:text-[var(--primary)] transition-colors leading-none mb-0.5">
                       {label}
                     </span>
-                    <span className="text-[10px] text-[var(--muted)] tracking-[0.03em] leading-none">
+                    <span className="text-[11px] text-[var(--dim)] tracking-[0.02em] leading-none">
                       {sub}
                     </span>
                   </span>

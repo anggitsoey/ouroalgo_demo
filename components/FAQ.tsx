@@ -344,8 +344,8 @@ export function FAQ() {
                   }}
                 >
                   <span
-                    className="text-[9px] tracking-[0.2em] font-mono flex-shrink-0"
-                    style={{ opacity: 0.5 }}
+                    className="text-[10px] font-medium flex-shrink-0"
+                    style={{ opacity: 0.4, color: 'inherit' }}
                   >
                     {tab.code}
                   </span>
