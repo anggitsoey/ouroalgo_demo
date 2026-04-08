@@ -1,25 +1,19 @@
-import { Send, AlertTriangle, Users } from 'lucide-react'
+import { Send, AlertTriangle } from 'lucide-react'
+
+const TELEGRAM_ICON = (
+  <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
+    <path d="M11.944 0A12 12 0 1 0 24 12 12 12 0 0 0 11.944 0Zm5.883 8.164-2.037 9.607c-.152.666-.553.828-1.12.515l-3.1-2.285-1.494 1.437a.78.78 0 0 1-.624.305l.222-3.147 5.738-5.182c.249-.222-.055-.345-.386-.123L7.19 14.618l-3.048-.952c-.663-.207-.676-.663.138-.982l11.9-4.589c.552-.2 1.035.134.857.969-.001 0-.001.001-.002.1Z" />
+  </svg>
+)
 
 const SOCIAL = [
   {
-    label: 'Telegram Personal',
-    sub: '@elboro07',
-    href: 'https://t.me/elboro07',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
-        <path d="M11.944 0A12 12 0 1 0 24 12 12 12 0 0 0 11.944 0Zm5.883 8.164-2.037 9.607c-.152.666-.553.828-1.12.515l-3.1-2.285-1.494 1.437a.78.78 0 0 1-.624.305l.222-3.147 5.738-5.182c.249-.222-.055-.345-.386-.123L7.19 14.618l-3.048-.952c-.663-.207-.676-.663.138-.982l11.9-4.589c.552-.2 1.035.134.857.969-.001 0-.001.001-.002.1Z" />
-      </svg>
-    ),
-  },
-  {
-    label: 'Grup Telegram',
-    sub: 'Komunitas OURO ALGO',
+    label: 'Telegram',
     href: 'https://t.me/+GLyNWZmhRqJjODBl',
-    icon: <Users size={13} />,
+    icon: TELEGRAM_ICON,
   },
   {
     label: 'TikTok',
-    sub: '@elboro07',
     href: 'https://www.tiktok.com/@elboro07',
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
@@ -62,12 +56,12 @@ export function Footer() {
               Siap trading lebih sistematis?
             </h3>
             <p className="text-[13px] text-[var(--muted)]">
-              Bergabung dengan 500+ trader yang sudah menggunakan ekosistem OURO ALGO.
+              Mulai trading lebih sistematis dengan ekosistem OURO ALGO.
             </p>
           </div>
           <div className="flex gap-2 flex-shrink-0">
             <a href="#pricing" className="btn-primary">Lihat Paket</a>
-            <a href="https://t.me/elboro07" target="_blank" rel="noopener noreferrer" className="btn-secondary">
+            <a href="https://t.me/+GLyNWZmhRqJjODBl" target="_blank" rel="noopener noreferrer" className="btn-secondary">
               <Send size={12} />
               Telegram
             </a>
@@ -93,7 +87,7 @@ export function Footer() {
 
             {/* Social links */}
             <div className="flex flex-col gap-3">
-              {SOCIAL.map(({ label, sub, href, icon }) => (
+              {SOCIAL.map(({ label, href, icon }) => (
                 <a
                   key={label}
                   href={href}
@@ -104,13 +98,8 @@ export function Footer() {
                   <span className="text-[var(--muted)] group-hover:text-[var(--primary)] transition-colors flex-shrink-0">
                     {icon}
                   </span>
-                  <span className="flex flex-col">
-                    <span className="text-[13px] text-[var(--muted)] group-hover:text-[var(--primary)] transition-colors leading-none mb-0.5">
-                      {label}
-                    </span>
-                    <span className="text-[11px] text-[var(--dim)] tracking-[0.02em] leading-none">
-                      {sub}
-                    </span>
+                  <span className="text-[13px] text-[var(--muted)] group-hover:text-[var(--primary)] transition-colors">
+                    {label}
                   </span>
                 </a>
               ))}

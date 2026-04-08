@@ -5,38 +5,34 @@ import { useRef, useEffect, useState } from 'react'
 const testimonials = [
   {
     id: 'T-001',
-    name: 'Rizky A.',
-    handle: '@rizkytrader',
-    plan: 'Trader',
-    months: '6mo',
-    text: 'Sudah 6 bulan pakai EA OURO ALGO. Win rate konsisten di 65-70%, dan yang bikin tenang — semua bisa dicek langsung di Myfxbook. Tidak ada yang ditutup-tutupin.',
+    name: 'R*****',
+    handle: '@r*****a',
+    plan: 'Starter',
+    text: 'Mulai dari Starter karena mau coba dulu. EA-nya langsung jalan setelah setup, dan signal VIP-nya jelas — ada entry, SL, TP. Tidak perlu tebak-tebakan.',
     rating: 5,
   },
   {
     id: 'T-002',
-    name: 'Dian M.',
-    handle: '@dianfx',
-    plan: 'Signal',
-    months: '4mo',
-    text: 'Awalnya skeptis, tapi setelah lihat track record live-nya saya langsung subscribe. Signal-nya jelas entry, SL, dan TP-nya. Cocok banget buat yang masih belajar.',
+    name: 'D*****',
+    handle: '@d*****m',
+    plan: 'Growth',
+    text: 'Paket Growth yang paling worth it. EA otomatis jalan, signal bisa di-follow, plus materi edukasinya bantu saya ngerti logika di balik sistemnya. Paket lengkap untuk yang serius.',
     rating: 5,
   },
   {
     id: 'T-003',
-    name: 'Fajar K.',
-    handle: '@fajar.quant',
+    name: 'F*****',
+    handle: '@f*****k',
     plan: 'Full Access',
-    months: '8mo',
-    text: 'Algo Research-nya yang bikin saya tertarik. Laporannya detail, metodenya jelas, dan bisa saya replikasi sendiri. Worth it banget untuk Full Access.',
+    text: 'Algo Research-nya yang bikin saya pilih Full Access. Laporannya dalam format .ipynb, metodenya bisa direplikasi, dan datanya transparan. Ini bukan sekadar sinyal — ini riset sungguhan.',
     rating: 5,
   },
   {
     id: 'T-004',
-    name: 'Sari W.',
-    handle: '@sariwibowo',
-    plan: 'Trader',
-    months: '5mo',
-    text: 'EA-nya stabil, drawdown terkontrol. Tim support juga responsif di Telegram. Saya sudah rekomendasikan ke 3 teman dan mereka semua puas.',
+    name: 'S*****',
+    handle: '@s*****w',
+    plan: 'Custom',
+    text: 'Saya ambil EA one-time dan signal tahunan saja lewat paket Custom. Fleksibel, bayar sesuai kebutuhan. EA-nya stabil, drawdown terkontrol, support responsif di Telegram.',
     rating: 5,
   },
 ]
@@ -44,7 +40,7 @@ const testimonials = [
 // Triple for seamless infinite loop
 const items = [...testimonials, ...testimonials, ...testimonials]
 
-function TestimonialCard({ id, name, handle, plan, months, text, rating }: typeof testimonials[0]) {
+function TestimonialCard({ id, name, handle, plan, text, rating }: typeof testimonials[0]) {
   return (
     <div className="glow-card flex-shrink-0 w-[340px] flex flex-col gap-4 border border-[var(--border)] bg-[var(--surface)] p-5"
          style={{ borderRadius: 'var(--r-md)' }}>

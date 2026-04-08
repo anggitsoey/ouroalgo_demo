@@ -77,33 +77,33 @@ const INDIVIDUAL = [
     area: 'Expert Advisor',
     code: 'EA',
     options: [
-      { id: 'ea-oto', area: 'EA', name: 'One-time Purchase', price: 1699000, period: 'sekali bayar', note: 'Licence key per akun MT4/MT5. Bayar sekali, pakai selamanya.' },
-      { id: 'ea-sub', area: 'EA', name: 'Monthly Subscription', price: 269000, period: '/ bulan', note: 'Selalu akses versi terbaru. Bisa cancel kapan saja.' },
+      { id: 'ea-oto', area: 'EA', name: 'One-time Purchase', price: 1699000, period: 'sekali bayar', note: 'Akses permanen ke EA. Lisensi terikat ke akun MT5, aktif seumur hidup.' },
+      { id: 'ea-sub', area: 'EA', name: 'Monthly Subscription', price: 269000, period: '/ bulan', note: 'Gunakan EA selama berlangganan aktif. Selalu terima update terbaru.' },
     ],
   },
   {
     area: 'Signal & Copy Trading',
     code: 'SIG',
     options: [
-      { id: 'sig-bln', area: 'SIG', name: 'Monthly Subscription', price: 399000, period: '/ bulan', note: 'Signal XAUUSD harian via Telegram. Entry, SL, dan TP disertakan.' },
-      { id: 'sig-thn', area: 'SIG', name: 'Yearly Subscription', price: 2499000, period: '/ tahun', note: 'Semua fitur bulanan. Hemat ~48% dibanding berlangganan bulanan.' },
+      { id: 'sig-bln', area: 'SIG', name: 'Monthly Subscription', price: 399000, period: '/ bulan', note: 'Sinyal XAUUSD via Telegram setiap hari trading. Entry, SL, dan TP tertera jelas.' },
+      { id: 'sig-thn', area: 'SIG', name: 'Yearly Subscription', price: 2499000, period: '/ tahun', note: 'Akses sinyal selama 12 bulan. Lebih hemat dibanding berlangganan per bulan.' },
     ],
   },
   {
     area: 'Kelas & Edukasi',
     code: 'EDU',
     options: [
-      { id: 'edu-kls', area: 'EDU', name: 'One-time Purchase', price: 269000, period: '/ kelas', note: 'Akses materi satu modul seumur hidup. Cocok untuk topik spesifik.' },
-      { id: 'edu-bln', area: 'EDU', name: 'Monthly Subscription', price: 249000, period: '/ bulan', note: 'Akses semua kelas aktif dan kelas baru yang dirilis.' },
-      { id: 'edu-thn', area: 'EDU', name: 'Yearly Subscription', price: 1850000, period: '/ tahun', note: 'Akses penuh semua kelas selama setahun. Hemat ~38% vs bulanan.' },
+      { id: 'edu-kls', area: 'EDU', name: 'One-time Purchase', price: 269000, period: '/ kelas', note: 'Beli satu kelas, akses selamanya. Pilih topik yang paling relevan.' },
+      { id: 'edu-bln', area: 'EDU', name: 'Monthly Subscription', price: 249000, period: '/ bulan', note: 'Akses ke semua kelas yang tersedia, termasuk kelas baru yang ditambahkan.' },
+      { id: 'edu-thn', area: 'EDU', name: 'Yearly Subscription', price: 1850000, period: '/ tahun', note: 'Akses penuh ke seluruh kelas selama 12 bulan. Pilihan terbaik untuk belajar terstruktur.' },
     ],
   },
   {
     area: 'Algo Research',
     code: 'RSC',
     options: [
-      { id: 'rsc-bln', area: 'RSC', name: 'Monthly Subscription', price: 269000, period: '/ bulan', note: 'Laporan riset algoritmik bulanan dalam format .ipynb dan PDF.' },
-      { id: 'rsc-thn', area: 'RSC', name: 'Yearly Subscription', price: 1850000, period: '/ tahun', note: '12 laporan riset sepanjang tahun. Hemat ~43% vs bulanan.' },
+      { id: 'rsc-bln', area: 'RSC', name: 'Monthly Subscription', price: 269000, period: '/ bulan', note: 'Laporan riset algoritmik per bulan dalam format .ipynb dan PDF. Metode bisa direplikasi sendiri.' },
+      { id: 'rsc-thn', area: 'RSC', name: 'Yearly Subscription', price: 1850000, period: '/ tahun', note: 'Akses laporan riset algoritmik selama 12 bulan. Format .ipynb dan PDF, metode transparan dan terdokumentasi.' },
     ],
   },
 ]
@@ -450,10 +450,6 @@ export function PricingPreview() {
                 >
                   Lanjutkan <ArrowRight size={11} />
                 </button>
-                <p className="text-[9px] text-[var(--muted)] leading-relaxed text-center">
-                  Simulasi ini bukan invoice resmi.
-                  <br />Hubungi kami untuk konfirmasi.
-                </p>
               </div>
             </div>
           </div>

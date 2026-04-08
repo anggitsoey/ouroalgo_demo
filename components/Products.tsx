@@ -6,8 +6,8 @@ const products = [
     code: 'EA',
     tag: 'Automated',
     title: 'Expert Advisor',
-    desc: 'EA berbasis algoritma yang berjalan 24/5 di MetaTrader. Dioptimasi dengan data historis bertahun-tahun dan terus diperbarui.',
-    features: ['Licence key per akun MT', 'Backtest report tersedia', 'Update otomatis', 'Preset siap pakai'],
+    desc: 'EA berbasis algoritma yang berjalan 24/5 di MetaTrader 5. Dioptimasi dengan data historis bertahun-tahun dan terus diperbarui.',
+    features: ['Licence key per akun MT5', 'Backtest report tersedia', 'Update otomatis', 'Preset siap pakai'],
     href: '#pricing',
     thumbnail: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=700&q=80', // dark code monitor
     imgFit: 'cover' as const,
@@ -42,7 +42,7 @@ const products = [
     code: 'RSC',
     tag: 'Research',
     title: 'Algo Research',
-    desc: 'Laporan riset algoritmik mendalam dalam format Jupyter Notebook dan PDF. Untuk quant trader dan developer strategi.',
+    desc: 'Laporan riset algoritmik mendalam dalam format Jupyter Notebook dan PDF. Untuk trader analitis dan developer strategi.',
     features: ['Download .ipynb & PDF', 'Riset original', 'Archive laporan lama', 'Metode & dataset terbuka'],
     href: '#pricing',
     thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80', // data analytics dashboard

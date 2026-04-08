@@ -1,10 +1,10 @@
-import { AlertTriangle, Download, FileText } from 'lucide-react'
+import { AlertTriangle, Download, FileText, Cpu, BarChart2, ShieldCheck, Clock, ArrowRight } from 'lucide-react'
 
 const stats = [
-  { value: '75.85%', label: 'Win Rate',      sub: '443 trades · 2020–2025' },
+  { value: '75.85%', label: 'Win Rate',      sub: 'persentase trade profit' },
   { value: '1.94',   label: 'Profit Factor', sub: 'reward/risk ratio' },
   { value: '17.41%', label: 'Max Drawdown',  sub: 'equity drawdown' },
-  { value: '3.15',   label: 'Sharpe Ratio',  sub: 'risk-adjusted return' },
+  { value: '2.10',   label: 'Sharpe Ratio',  sub: 'risk-adjusted return' },
 ]
 
 // Divider classes per index: works for both 2-col mobile & 4-col desktop
@@ -49,6 +49,68 @@ export function TrackRecord() {
           </a>
         </div>
 
+        {/* OEA Product Section */}
+        <div
+          className="mb-3 overflow-hidden"
+          style={{ border: '1px solid var(--primary-border)', borderRadius: 'var(--r-lg)', background: 'var(--primary-dim)' }}
+        >
+          {/* Top bar */}
+          <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--primary-border)] bg-[var(--primary-dim)]">
+            <div className="flex items-center gap-2.5">
+              <span className="chip" style={{ color: 'var(--primary)', borderColor: 'var(--primary-border)', background: 'var(--primary-dim)' }}>EA</span>
+              <span className="text-[13px] font-semibold text-[var(--text)] tracking-[-0.01em]">Ouro Exponent Algo</span>
+              <span className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)]">v1.0</span>
+            </div>
+            <span className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)]">XAUUSD · MT5</span>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-0">
+            {/* Left — description */}
+            <div className="p-6 border-b md:border-b-0 md:border-r border-[var(--border)]">
+              <p className="text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] mb-3">Tentang Produk</p>
+              <p className="text-[14px] text-[var(--text)] leading-relaxed mb-3">
+                Ouro Exponent Algo (OEA) adalah Expert Advisor otomatis yang beroperasi di MetaTrader 5, dioptimasi khusus untuk pair XAUUSD.
+              </p>
+              <p className="text-[13px] text-[var(--muted)] leading-relaxed mb-6">
+                Sistem entry berbasis fungsi komposit yang mensyaratkan dua kondisi analitik terpenuhi secara bersamaan pada timeframe M15. EA tidak masuk pasar secara sembarangan — setiap posisi memiliki alasan kuantitatif yang terukur.
+              </p>
+              <a href="/oea" className="btn-primary inline-flex">
+                Pelajari Lebih Lanjut <ArrowRight size={12} />
+              </a>
+            </div>
+
+            {/* Right — specs */}
+            <div className="p-6">
+              <p className="text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] mb-4">Spesifikasi</p>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { icon: Cpu,         label: 'Platform',    value: 'MetaTrader 5' },
+                  { icon: BarChart2,   label: 'Pair',        value: 'XAUUSD (Gold)' },
+                  { icon: Clock,       label: 'Timeframe',   value: 'M15' },
+                  { icon: ShieldCheck, label: 'Proteksi',    value: 'Max DD · News Filter' },
+                ].map(({ icon: Icon, label, value }) => (
+                  <div key={label} className="flex items-start gap-2.5">
+                    <Icon size={13} className="flex-shrink-0 mt-0.5" style={{ color: 'var(--primary)' }} />
+                    <div>
+                      <p className="text-[10px] tracking-[0.1em] uppercase text-[var(--muted)] leading-none mb-1">{label}</p>
+                      <p className="text-[13px] font-medium text-[var(--text)] leading-snug">{value}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-4">
+                <p className="text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] mb-2">Fitur Utama</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {['Smart Distance', 'Spread Filter', 'News Filter', 'Auto TP Basket', 'Max Drawdown Guard'].map((f) => (
+                    <span key={f} className="chip">{f}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Stats banner card */}
         <div
           className="relative overflow-hidden mb-3"
@@ -91,7 +153,7 @@ export function TrackRecord() {
         <div className="mb-3" style={{ border: '1px solid var(--border)', borderRadius: 'var(--r-lg)', overflow: 'hidden', background: 'var(--surface)' }}>
           {/* Label */}
           <div className="px-5 py-3 border-b border-[var(--border)]">
-            <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)]">// backtest report — OuroExponentAlgo v1.0</span>
+            <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)]">Backtest Report — OuroExponentAlgo v1.0</span>
           </div>
 
           {/* Row list */}

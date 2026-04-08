@@ -13,7 +13,7 @@ const TABS = [
     items: [
       {
         q: 'Apa itu OURO ALGO / Expert Advisor (EA)?',
-        a: 'OURO ALGO menyediakan Expert Advisor (EA) otomatis untuk platform MetaTrader 4/5. EA ini mengelola trading secara penuh otomatis — dari entry, manajemen posisi, hingga close — berdasarkan algoritma yang sudah diuji dengan data historis bertahun-tahun.',
+        a: 'OURO ALGO menyediakan Expert Advisor (EA) otomatis untuk platform MetaTrader 5 (MT5). EA ini mengelola trading secara penuh otomatis — dari entry, manajemen posisi, hingga close — berdasarkan algoritma yang sudah diuji dengan data historis bertahun-tahun.',
       },
       {
         q: 'Pair apa yang direkomendasikan?',
@@ -126,7 +126,7 @@ const TABS = [
       },
       {
         q: 'Apakah EA berjalan 24 jam?',
-        a: 'EA berjalan selama MetaTrader aktif dan terhubung ke internet. Penggunaan VPS sangat disarankan. Sebagai alternatif, jika jam trading sudah dikustomisasi, MT4/MT5 cukup diaktifkan dalam rentang jam tersebut saja.',
+        a: 'EA berjalan selama MetaTrader 5 aktif dan terhubung ke internet. Penggunaan VPS sangat disarankan. Sebagai alternatif, jika jam trading sudah dikustomisasi, MT5 cukup diaktifkan dalam rentang jam tersebut saja.',
       },
     ],
   },
@@ -172,7 +172,7 @@ const TABS = [
       },
       {
         q: 'Broker apa yang direkomendasikan?',
-        a: 'EA dapat berjalan di broker manapun yang mendukung MT4/MT5 dan menyediakan XAUUSD. Kriteria: spread rendah, eksekusi cepat, mendukung hedging. Broker yang sudah diuji: ICMarkets (utama), Pepperstone, Vantage, Exness, XM.',
+        a: 'EA dapat berjalan di broker manapun yang mendukung MT5 dan menyediakan XAUUSD. Kriteria: spread rendah, eksekusi cepat, mendukung hedging. Broker yang sudah diuji: ICMarkets (utama), Pepperstone, Vantage, Exness, XM.',
       },
       {
         q: 'Apa spesifikasi VPS yang direkomendasikan?',
@@ -215,7 +215,7 @@ const TABS = [
       },
       {
         q: 'Bagaimana cara mendapatkan license key setelah pembelian?',
-        a: 'Setelah pembelian dikonfirmasi, Anda akan diminta menyertakan nomor akun MT4/MT5. Nomor akun tidak memberikan akses ke akun trading — hanya digunakan untuk menghasilkan license key yang terikat ke akun tersebut. License key dikirimkan setelah nomor akun diterima.',
+        a: 'Setelah pembelian dikonfirmasi, Anda akan diminta menyertakan nomor akun MT5. Nomor akun tidak memberikan akses ke akun trading — hanya digunakan untuk menghasilkan license key yang terikat ke akun tersebut. License key dikirimkan setelah nomor akun diterima.',
       },
       {
         q: 'Bagaimana jika ingin ganti akun/broker, atau lupa license key?',
@@ -242,7 +242,7 @@ const TABS = [
       },
       {
         q: 'Bagaimana cara menerima update EA?',
-        a: 'Update diinformasikan via Telegram. File EA terbaru dikirimkan langsung — cukup ganti file .ex4/.ex5 lama dengan yang baru di folder MT4/MT5. License key tidak perlu diganti.',
+        a: 'Update diinformasikan via Telegram. File EA terbaru dikirimkan langsung — cukup ganti file .ex5 lama dengan yang baru di folder MT5. License key tidak perlu diganti.',
       },
       {
         q: 'Apakah update gratis selamanya?',

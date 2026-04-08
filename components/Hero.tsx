@@ -7,7 +7,7 @@ const ecosystem = [
   {
     code: 'EA',
     label: 'Expert Advisor',
-    desc: 'Otomasi trading MT4/MT5',
+    desc: 'Otomasi trading MT5',
     detail: 'Algoritma berjalan 24/5, dioptimasi dari data historis bertahun-tahun.',
     icon: Bot,
     stat: '98.2% uptime',
