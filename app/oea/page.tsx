@@ -1,6 +1,8 @@
 'use client'
 
+import React from 'react'
 import { useState, useEffect, useRef } from 'react'
+
 import { Cpu, BarChart2, ShieldCheck, Clock, ArrowLeft, ArrowRight, Check, AlertTriangle, Download, FileText, X, Send } from 'lucide-react'
 
 const DRIVE_FOLDER = 'https://drive.google.com/drive/folders/1OCQATdnrRHqapOfOrqVhlA5qoIPfUG_F?usp=drive_link'
@@ -122,11 +124,11 @@ function OeaTestiSlider({ onLightbox }: { onLightbox: (src: string) => void }) {
   }, [])
 
   return (
-    <section className="py-20 bg-[var(--surface2)]">
+    <section data-reveal className="py-20 bg-[var(--surface2)]">
       {/* Header */}
-      <div className="px-4 sm:px-8 lg:px-[13%] mb-8">
-        <p className="text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] mb-1">Testimoni</p>
-        <p className="text-[13px] text-[var(--muted)]">Dari member yang sudah menggunakan OEA.</p>
+      <div className="px-4 sm:px-8 lg:px-[13%] mb-10 pb-8 border-b border-[var(--border)]">
+        <p className="label-tag mb-4">Testimonials</p>
+        <h2 className="section-title">Kata mereka yang sudah <span className="accent-gradient">bergabung</span></h2>
       </div>
 
       {/* Slider */}
@@ -226,13 +228,7 @@ function OeaNavbar() {
             OURO <span style={{ color: 'var(--primary)' }}>ALGO</span>
           </span>
         </a>
-        <a
-          href="/"
-          className="flex items-center gap-1.5 text-[11px] tracking-[0.08em] uppercase transition-colors"
-          style={{ color: 'var(--muted)' }}
-          onMouseEnter={e => (e.currentTarget.style.color = 'var(--primary)')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
-        >
+        <a href="/" className="btn-primary !py-1.5 !px-4 inline-flex items-center gap-1.5">
           <ArrowLeft size={11} />
           Kembali ke Beranda
         </a>
@@ -250,6 +246,18 @@ const screenshots = [
 
 export default function EAPage() {
   const [lightbox, setLightbox] = useState<string | null>(null)
+
+  // Scroll reveal for all sections
+  useEffect(() => {
+    const els = document.querySelectorAll<HTMLElement>('[data-reveal]')
+    els.forEach(el => el.classList.add('reveal'))
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target) } }),
+      { threshold: 0.08 }
+    )
+    els.forEach(el => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <div className="min-h-screen bg-[var(--bg)]">
@@ -282,8 +290,8 @@ export default function EAPage() {
       <OeaNavbar />
 
       {/* Hero */}
-      <section className="px-4 sm:px-8 lg:px-[13%] pt-36 pb-24">
-        <div className="grid md:grid-cols-[1fr_auto] gap-10 items-start">
+      <section data-reveal className="px-4 sm:px-8 lg:px-[13%] pt-36 pb-24">
+        <div className="grid md:grid-cols-[1fr_auto] gap-10 items-center">
 
           {/* Left — title + desc + buttons */}
           <div>
@@ -293,10 +301,10 @@ export default function EAPage() {
             </div>
             <h1 className="text-4xl md:text-5xl font-medium tracking-[-0.025em] text-[var(--text)] leading-tight mb-4">
               Ouro Exponent Algo
-              <span className="ml-3 text-[22px] md:text-[28px] font-normal tracking-normal align-middle" style={{ color: 'var(--muted)' }}>/ OEA</span>
+              <br /><span className="text-[22px] md:text-[28px] font-normal tracking-normal" style={{ color: 'var(--muted)' }}>/ OEA</span>
             </h1>
             <p className="text-[16px] text-[var(--muted)] leading-relaxed max-w-2xl mb-6">
-              Expert Advisor otomatis berbasis MetaTrader 5, dioptimasi khusus untuk XAUUSD. Sistem entry selektif dengan manajemen risiko berlapis — dirancang untuk performa konsisten jangka panjang.
+              Expert Advisor otomatis berbasis MetaTrader 5, dioptimasi khusus untuk XAUUSD.<br />Sistem entry selektif dengan manajemen risiko berlapis — dirancang untuk performa konsisten jangka panjang.
             </p>
             <div className="flex flex-wrap gap-2">
               <a href="/#pricing" className="btn-primary">Lihat Paket <ArrowRight size={12} /></a>
@@ -304,14 +312,23 @@ export default function EAPage() {
             </div>
           </div>
 
-          {/* Right — specs (no label), top aligned with h1 */}
-          <div className="grid grid-cols-2 gap-x-8 gap-y-5 md:min-w-[220px] pt-[44px]">
+          {/* Right — specs, ecosystem card style */}
+          <div className="flex flex-col gap-3 md:min-w-[260px]">
             {specs.map(({ icon: Icon, label, value }) => (
-              <div key={label} className="flex items-start gap-2.5">
-                <Icon size={13} className="flex-shrink-0 mt-0.5" style={{ color: 'var(--primary)' }} />
+              <div
+                key={label}
+                className="glow-card flex items-center gap-4 px-5 py-4 border border-[var(--border)] bg-[var(--surface)]"
+                style={{ borderRadius: 'var(--r-md)' }}
+              >
+                <div
+                  className="flex-shrink-0 w-9 h-9 flex items-center justify-center border border-[var(--border)] bg-[var(--surface2)]"
+                  style={{ borderRadius: 'var(--r-sm)' }}
+                >
+                  <Icon size={15} style={{ color: 'var(--primary)' }} />
+                </div>
                 <div>
                   <p className="text-[10px] tracking-[0.1em] uppercase text-[var(--muted)] leading-none mb-1">{label}</p>
-                  <p className="text-[13px] font-medium text-[var(--text)]">{value}</p>
+                  <p className="text-[14px] font-medium text-[var(--text)]">{value}</p>
                 </div>
               </div>
             ))}
@@ -320,13 +337,17 @@ export default function EAPage() {
         </div>
       </section>
 
-      {/* Tentang Produk + Fitur Utama */}
-      <section className="px-4 sm:px-8 lg:px-[13%] py-20 bg-[var(--surface2)]">
-        <div className="grid md:grid-cols-2 gap-12">
-
-          {/* Left — Tentang Produk */}
+      {/* Tentang Produk + Fitur Utama — surface2 */}
+      <section data-reveal className="px-4 sm:px-8 lg:px-[13%] py-20 bg-[var(--surface2)]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-8 border-b border-[var(--border)]">
           <div>
-            <p className="text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] mb-4">Tentang Produk</p>
+            <p className="label-tag mb-4">Overview</p>
+
+            <h2 className="section-title">Tentang Produk</h2>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-2 gap-12">
+          <div>
             <p className="text-[14px] text-[var(--text)] leading-relaxed mb-3">
               Ouro Exponent Algo (OEA) adalah Expert Advisor yang beroperasi secara penuh otomatis di MetaTrader 5. EA ini mengelola seluruh siklus trading — dari entry, manajemen posisi, hingga take profit — tanpa intervensi manual.
             </p>
@@ -337,8 +358,6 @@ export default function EAPage() {
               EA mendukung multi-entry terstruktur dengan kalkulasi lot proporsional, namun secara alami sering berakhir dengan single entry karena selektivitas kondisi entry-nya.
             </p>
           </div>
-
-          {/* Right — Fitur Utama */}
           <div>
             <p className="text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] mb-4">Fitur Utama</p>
             <div className="flex flex-wrap gap-2">
@@ -347,15 +366,20 @@ export default function EAPage() {
               ))}
             </div>
           </div>
-
         </div>
       </section>
 
       {/* Arsitektur Sistem — default bg */}
-      <section className="px-4 sm:px-8 lg:px-[13%] py-20">
-        <div className="mb-6">
-          <p className="text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] mb-1">Arsitektur Sistem</p>
-          <p className="text-[13px] text-[var(--muted)]">Komponen-komponen utama yang membentuk OEA sebagai sistem trading yang terstruktur dan terukur.</p>
+      <section data-reveal className="px-4 sm:px-8 lg:px-[13%] py-20">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-8 border-b border-[var(--border)]">
+          <div>
+            <p className="label-tag mb-4">System</p>
+
+            <h2 className="section-title">Arsitektur Sistem</h2>
+          </div>
+          <p className="section-sub md:text-right max-w-xs">
+            Komponen utama yang membentuk OEA sebagai sistem trading terstruktur dan terukur.
+          </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {features.map(({ tag, title, desc }) => (
@@ -367,7 +391,6 @@ export default function EAPage() {
               <p className="text-[12px] text-[var(--muted)] leading-relaxed">{desc}</p>
             </div>
           ))}
-          {/* Dan lain-lain */}
           <div className="card p-5 flex flex-col items-center justify-center gap-2 opacity-40">
             <div className="flex gap-1">
               {[0,1,2].map(i => <span key={i} className="w-1 h-1 rounded-full bg-[var(--muted)]" />)}
@@ -377,11 +400,17 @@ export default function EAPage() {
         </div>
       </section>
 
-      {/* Live Performance & Backtest — default bg */}
-      <section className="px-4 sm:px-8 lg:px-[13%] py-20">
-        <div className="mb-6">
-          <p className="text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] mb-1">Live Performance & Backtest</p>
-          <p className="text-[13px] text-[var(--muted)]">Statistik performa live terverifikasi dan hasil pengujian historis pada berbagai level modal.</p>
+      {/* Live Performance & Backtest — surface2 */}
+      <section data-reveal className="px-4 sm:px-8 lg:px-[13%] py-20 bg-[var(--surface2)]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-8 border-b border-[var(--border)]">
+          <div>
+            <p className="label-tag mb-4">Performance</p>
+
+            <h2 className="section-title">Live Performance <span className="accent-gradient">&amp; Backtest</span></h2>
+          </div>
+          <p className="section-sub md:text-right max-w-xs">
+            Statistik performa live terverifikasi dan hasil pengujian historis pada berbagai level modal.
+          </p>
         </div>
 
         {/* Stats banner */}
@@ -456,9 +485,15 @@ export default function EAPage() {
         </div>
       </section>
 
-      {/* Screenshots — surface2 bg */}
-      <section className="px-4 sm:px-8 lg:px-[13%] py-20 bg-[var(--surface2)]">
-        <p className="text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] mb-6">Tampilan pada MetaTrader 5</p>
+      {/* Screenshots — default bg */}
+      <section data-reveal className="px-4 sm:px-8 lg:px-[13%] py-20">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-8 border-b border-[var(--border)]">
+          <div>
+            <p className="label-tag mb-4">Screenshots</p>
+
+            <h2 className="section-title">Tampilan pada <span className="accent-gradient">MetaTrader 5</span></h2>
+          </div>
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {screenshots.map(({ src, alt }) => (
             <div
@@ -473,30 +508,28 @@ export default function EAPage() {
         </div>
       </section>
 
-      {/* Testimoni — slider */}
+      {/* Testimoni — slider, surface2 */}
       <OeaTestiSlider onLightbox={setLightbox} />
 
-      {/* CTA + Risk warning — default bg */}
-      <section className="px-4 sm:px-8 lg:px-[13%] py-20">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
+      {/* CTA — default bg */}
+      <section data-reveal className="px-4 sm:px-8 lg:px-[13%] py-20">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-8 border-b border-[var(--border)]">
           <div>
-            <p className="text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] mb-1.5">get started</p>
-            <h3 className="text-[17px] font-medium text-[var(--text)] tracking-[-0.01em] leading-snug mb-0.5">
-              Dapatkan Ouro Exponent Algo
-            </h3>
-            <p className="text-[13px] text-[var(--muted)]">
-              Tersedia dalam paket bundle maupun pembelian satuan. Lisensi terikat ke akun MT5.
-            </p>
-          </div>
-          <div className="flex gap-2 flex-shrink-0">
-            <a href="/#pricing" className="btn-primary">Lihat Paket</a>
-            <a href="https://t.me/+GLyNWZmhRqJjODBl" target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center gap-1.5">
-              <Send size={11} />
-              Telegram
-            </a>
-          </div>
-        </div>
+            <p className="label-tag mb-4">Get Started</p>
 
+            <h2 className="section-title">Dapatkan <span className="accent-gradient">Ouro Exponent Algo</span></h2>
+          </div>
+          <p className="section-sub md:text-right max-w-xs">
+            Tersedia dalam paket bundle maupun pembelian satuan. Lisensi terikat ke akun MT5.
+          </p>
+        </div>
+        <div className="flex gap-2">
+          <a href="/#pricing" className="btn-primary">Lihat Paket <ArrowRight size={12} /></a>
+          <a href="https://t.me/+GLyNWZmhRqJjODBl" target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center gap-1.5">
+            <Send size={11} />
+            Telegram
+          </a>
+        </div>
       </section>
     </div>
   )

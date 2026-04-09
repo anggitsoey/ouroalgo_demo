@@ -32,7 +32,7 @@ export default function MaintenancePage() {
       {/* Back */}
       <Link
         href="/"
-        className="btn-secondary inline-flex"
+        className="btn-primary inline-flex"
       >
         ← Kembali ke Beranda
       </Link>

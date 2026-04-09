@@ -37,9 +37,9 @@ const links = {
     { label: 'FAQ', href: '#faq' },
   ],
   Legal: [
-    { label: 'Syarat & Ketentuan', href: '#' },
-    { label: 'Kebijakan Privasi', href: '#' },
-    { label: 'Risk Disclosure', href: '#' },
+    { label: 'Syarat & Ketentuan', href: '/legal/syarat-ketentuan' },
+    { label: 'Kebijakan Privasi', href: '/legal/kebijakan-privasi' },
+    { label: 'Risk Disclosure', href: '/legal/risk-disclosure' },
   ],
 }
 
