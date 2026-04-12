@@ -1,9 +1,11 @@
 'use client'
 
+import React from 'react'
 import { useState, useEffect } from 'react'
 import { ArrowRight, Check, X, Timer } from 'lucide-react'
+import { useReveal } from '@/hooks/useReveal'
 
-const TARGET_DATE = new Date('2026-04-10T09:00:00+07:00').getTime()
+const TARGET_DATE = new Date('2026-04-12T09:00:00+07:00').getTime()
 function calcCountdown() {
   const diff = TARGET_DATE - Date.now()
   if (diff <= 0) return null
@@ -15,6 +17,12 @@ function calcCountdown() {
   }
 }
 function pad(n: number) { return String(n).padStart(2, '0') }
+
+const TELEGRAM_USERNAME = 'elboro07'
+
+function tgLink(msg: string) {
+  return `https://t.me/${TELEGRAM_USERNAME}?text=${encodeURIComponent(msg)}`
+}
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -118,11 +126,13 @@ function fmt(n: number) {
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export function PricingPreview() {
+  const ref = useReveal()
   const [customOpen, setCustomOpen] = useState(false)
   const [selections, setSelections] = useState<Selection[]>([])
-  const [countdown, setCountdown] = useState(calcCountdown)
+  const [countdown, setCountdown] = useState<ReturnType<typeof calcCountdown>>(null)
 
   useEffect(() => {
+    setCountdown(calcCountdown())
     const id = setInterval(() => setCountdown(calcCountdown()), 1000)
     return () => clearInterval(id)
   }, [])
@@ -143,14 +153,14 @@ export function PricingPreview() {
   const isSelected = (id: string) => selections.some((s) => s.id === id)
 
   return (
-    <section id="pricing" className="py-20 px-4 sm:px-8 lg:px-[13%] bg-[var(--surface2)]">
+    <section ref={ref as React.RefObject<HTMLElement>} id="pricing" className="py-20 px-4 sm:px-8 lg:px-[13%] bg-[var(--surface2)]">
       <div>
 
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
           <div>
             <p className="label-tag mb-4">Pricing</p>
-            <div className="accent-line" />
+
             <h2 className="section-title">
               Pilih paket yang{' '}
               <span className="accent-gradient">sesuai tujuanmu</span>
@@ -175,7 +185,7 @@ export function PricingPreview() {
                   Pendaftaran dibuka
                 </p>
                 <p className="text-[14px] font-bold" style={{ color: 'var(--primary)' }}>
-                  10 April 2026 · 09.00 WIB
+                  12 April 2026 · 09.00 WIB
                 </p>
               </div>
 
@@ -276,12 +286,14 @@ export function PricingPreview() {
                     ))}
                   </ul>
                 </div>
-                <button
+                <a
+                  href={tgLink(`Halo, saya ingin membeli paket ${name} (${code}) dengan pilihan berikut:\n${includes.map(f => `- ${f}`).join('\n')}\n\nTotal: ${fmt(price)}`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-primary w-full justify-center text-[10px]"
-                  onClick={() => alert('Hubungi OURO ALGO di Telegram untuk melanjutkan.')}
                 >
                   Mulai {name} <ArrowRight size={11} />
-                </button>
+                </a>
               </div>
               </div>
             </div>
@@ -443,13 +455,15 @@ export function PricingPreview() {
                   )}
                 </div>
 
-                <button
-                  disabled={selections.length === 0}
-                  onClick={() => alert('Hubungi OURO ALGO di Telegram untuk melanjutkan.')}
-                  className="btn-primary w-full justify-center mb-3 disabled:opacity-40 disabled:cursor-not-allowed"
+                <a
+                  href={selections.length > 0 ? tgLink(`Halo, saya ingin membeli paket Custom dengan pilihan berikut:\n${selections.map(s => `- ${s.name} (${s.period})`).join('\n')}\n\nTotal: Rp ${selections.reduce((s, i) => s + i.price, 0).toLocaleString('id-ID')}`) : '#'}
+                  target={selections.length > 0 ? '_blank' : undefined}
+                  rel="noopener noreferrer"
+                  onClick={e => { if (selections.length === 0) e.preventDefault() }}
+                  className={`btn-primary w-full justify-center mb-3 ${selections.length === 0 ? 'opacity-40 cursor-not-allowed pointer-events-none' : ''}`}
                 >
                   Lanjutkan <ArrowRight size={11} />
-                </button>
+                </a>
               </div>
             </div>
           </div>

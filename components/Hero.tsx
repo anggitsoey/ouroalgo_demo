@@ -1,5 +1,6 @@
 'use client'
 
+'use client'
 import { useState } from 'react'
 import { ArrowRight, Bot, Radio, BookOpen, FlaskConical } from 'lucide-react'
 
@@ -52,7 +53,7 @@ function EcosystemGraph() {
               key={code}
               onMouseEnter={() => setHovered(code)}
               onMouseLeave={() => setHovered(null)}
-              className="glow-card relative flex items-center gap-5 px-5 py-4 border cursor-pointer overflow-hidden"
+              className="glow-card relative flex items-center gap-5 px-5 py-4 border cursor-default overflow-hidden"
               style={{
                 borderRadius: 'var(--r-md)',
                 background: isHovered ? 'var(--primary-dim)' : 'var(--surface)',

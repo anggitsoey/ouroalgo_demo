@@ -1,4 +1,7 @@
+'use client'
+import React from 'react'
 import { Bot, Radio, GraduationCap, FlaskConical, ArrowRight } from 'lucide-react'
+import { useReveal } from '@/hooks/useReveal'
 
 const products = [
   {
@@ -52,15 +55,16 @@ const products = [
 ]
 
 export function Products() {
+  const ref = useReveal()
   return (
-    <section id="products" className="py-20 px-4 sm:px-8 lg:px-[13%] bg-[var(--surface2)]">
+    <section ref={ref as React.RefObject<HTMLElement>} id="products" className="py-20 px-4 sm:px-8 lg:px-[13%] bg-[var(--surface2)]">
       <div>
 
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-8 border-b border-[var(--border)]">
           <div>
             <p className="label-tag mb-4">Products</p>
-            <div className="accent-line" />
+
             <h2 className="section-title">
               Satu ekosistem,{' '}
               <span className="accent-gradient">empat solusi</span>

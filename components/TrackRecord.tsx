@@ -1,4 +1,7 @@
+'use client'
+import React from 'react'
 import { AlertTriangle, Download, FileText, Cpu, BarChart2, ShieldCheck, Clock, ArrowRight } from 'lucide-react'
+import { useReveal } from '@/hooks/useReveal'
 
 const stats = [
   { value: '75.85%', label: 'Win Rate',      sub: 'persentase trade profit' },
@@ -25,15 +28,16 @@ const backtests = [
 ]
 
 export function TrackRecord() {
+  const ref = useReveal()
   return (
-    <section id="track-record" className="py-20 px-4 sm:px-8 lg:px-[13%]">
+    <section ref={ref as React.RefObject<HTMLElement>} id="track-record" className="py-20 px-4 sm:px-8 lg:px-[13%]">
       <div>
 
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-8 border-b border-[var(--border)]">
           <div>
             <p className="label-tag mb-4">Performance</p>
-            <div className="accent-line" />
+
             <h2 className="section-title">
               Track record{' '}
               <span className="accent-gradient">live & terverifikasi</span>

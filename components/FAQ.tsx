@@ -1,7 +1,9 @@
 'use client'
 
+import React from 'react'
 import { useState } from 'react'
 import { ChevronRight, ChevronDown } from 'lucide-react'
+import { useReveal } from '@/hooks/useReveal'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -301,20 +303,49 @@ function FAQItem({ q, a, idx }: { q: string; a: string; idx: number }) {
   )
 }
 
+// ─── Mobile Category Dropdown ────────────────────────────────────────────────
+
+function MobileFAQCategory({ tab }: { tab: typeof TABS[0] }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="border border-[var(--border)] overflow-hidden" style={{ borderRadius: 'var(--r-md)' }}>
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-[var(--surface2)]"
+      >
+        <div className="flex items-center gap-2.5">
+          <span className="text-[10px] font-medium" style={{ color: 'var(--muted)', opacity: 0.5 }}>{tab.code}</span>
+          <span className="text-[11px] font-medium tracking-[0.1em] uppercase text-[var(--text)]">{tab.label}</span>
+          <span className="text-[11px] text-[var(--muted)]">— {tab.items.length}</span>
+        </div>
+        {open ? <ChevronDown size={13} style={{ color: 'var(--muted)', flexShrink: 0 }} /> : <ChevronRight size={13} style={{ color: 'var(--muted)', flexShrink: 0 }} />}
+      </button>
+      {open && (
+        <div className="border-t border-[var(--border)] flex flex-col gap-2 p-3 bg-[var(--surface2)]">
+          {tab.items.map((item, i) => (
+            <FAQItem key={`${tab.id}-${i}`} q={item.q} a={item.a} idx={i} />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export function FAQ() {
   const [activeTab, setActiveTab] = useState('umum')
   const current = TABS.find((t) => t.id === activeTab) ?? TABS[0]
+  const ref = useReveal()
 
   return (
-    <section id="faq" className="py-20 px-4 sm:px-8 lg:px-[13%]">
+    <section ref={ref as React.RefObject<HTMLElement>} id="faq" className="py-20 px-4 sm:px-8 lg:px-[13%]">
       <div>
 
         {/* Header */}
         <div className="mb-10 pb-8 border-b border-[var(--border)]">
           <p className="label-tag mb-4">FAQ</p>
-          <div className="accent-line" />
+
           <h2 className="section-title">
             Pertanyaan yang{' '}
             <span className="accent-gradient">sering ditanyakan</span>
@@ -324,11 +355,26 @@ export function FAQ() {
           </p>
         </div>
 
-        {/* Layout: sidebar kiri + konten kanan */}
-        <div className="flex flex-col lg:flex-row gap-6">
+        {/* Mobile/Tablet: dropdown per kategori */}
+        <div className="lg:hidden flex flex-col gap-3">
+          {TABS.map((tab) => (
+            <MobileFAQCategory key={tab.id} tab={tab} />
+          ))}
+          <div className="mt-2 p-4 border border-[var(--border)] text-center" style={{ borderRadius: 'var(--r-md)' }}>
+            <p className="text-[14px] text-[var(--muted)]">
+              Masih ada pertanyaan?{' '}
+              <a href="https://t.me/elboro07" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:text-[var(--primary-light)] transition-colors">
+                Hubungi kami di Telegram →
+              </a>
+            </p>
+          </div>
+        </div>
+
+        {/* Desktop: sidebar kiri + konten kanan */}
+        <div className="hidden lg:flex gap-6">
 
           {/* Sidebar tabs */}
-          <div className="flex lg:flex-col gap-2 flex-wrap lg:flex-nowrap lg:w-[180px] lg:flex-shrink-0">
+          <div className="flex flex-col gap-2 w-[180px] flex-shrink-0">
             {TABS.map((tab) => {
               const isActive = tab.id === activeTab
               return (
@@ -343,10 +389,7 @@ export function FAQ() {
                     color: isActive ? 'var(--primary)' : 'var(--muted)',
                   }}
                 >
-                  <span
-                    className="text-[10px] font-medium flex-shrink-0"
-                    style={{ opacity: 0.4, color: 'inherit' }}
-                  >
+                  <span className="text-[10px] font-medium flex-shrink-0" style={{ opacity: 0.4, color: 'inherit' }}>
                     {tab.code}
                   </span>
                   <span className="text-[11px] font-medium tracking-[0.1em] uppercase flex-1 text-left">
@@ -359,7 +402,6 @@ export function FAQ() {
 
           {/* Content */}
           <div className="flex-1 min-w-0">
-            {/* Active tab label */}
             <div className="flex items-center gap-3 mb-4">
               <span className="chip" style={{ color: 'var(--primary)', borderColor: 'var(--primary-border)', background: 'var(--primary-dim)' }}>
                 {current.code}
@@ -367,19 +409,12 @@ export function FAQ() {
               <span className="text-[11px] font-medium tracking-[0.1em] uppercase text-[var(--text)]">{current.label}</span>
               <span className="text-[11px] tracking-[0.05em] text-[var(--muted)]">— {current.items.length} pertanyaan</span>
             </div>
-
-            {/* FAQ list */}
             <div className="flex flex-col gap-2">
               {current.items.map((item, i) => (
                 <FAQItem key={`${activeTab}-${i}`} q={item.q} a={item.a} idx={i} />
               ))}
             </div>
-
-            {/* Contact CTA */}
-            <div
-              className="mt-6 p-4 border border-[var(--border)] text-center"
-              style={{ borderRadius: 'var(--r-md)' }}
-            >
+            <div className="mt-6 p-4 border border-[var(--border)] text-center" style={{ borderRadius: 'var(--r-md)' }}>
               <p className="text-[14px] text-[var(--muted)]">
                 Masih ada pertanyaan?{' '}
                 <a href="https://t.me/elboro07" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:text-[var(--primary-light)] transition-colors">

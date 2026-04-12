@@ -1,4 +1,7 @@
+'use client'
+import React from 'react'
 import { FlaskConical, BarChart2, Shield, Handshake } from 'lucide-react'
+import { useReveal } from '@/hooks/useReveal'
 
 const pillars = [
   {
@@ -28,8 +31,9 @@ const pillars = [
 ]
 
 export function About() {
+  const ref = useReveal()
   return (
-    <section id="about" className="py-20 px-4 sm:px-8 lg:px-[13%]">
+    <section ref={ref as React.RefObject<HTMLElement>} id="about" className="py-20 px-4 sm:px-8 lg:px-[13%]">
       <div>
         {/* Mobile/tablet: stack. Desktop: side by side */}
         <div className="flex flex-col lg:grid lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-12 lg:items-start pt-0">
@@ -37,7 +41,7 @@ export function About() {
           {/* Left */}
           <div>
             <p className="label-tag mb-4">About</p>
-            <div className="accent-line" />
+
             <h2 className="section-title mb-5">
               Dibangun oleh trader,<br />
               <span className="accent-gradient">untuk trader.</span>

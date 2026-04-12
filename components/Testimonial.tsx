@@ -1,6 +1,8 @@
 'use client'
 
+import React from 'react'
 import { useRef, useEffect, useState } from 'react'
+import { useReveal } from '@/hooks/useReveal'
 
 const testimonials = [
   {
@@ -71,6 +73,7 @@ function TestimonialCard({ id, name, handle, plan, text, rating }: typeof testim
 }
 
 export function Testimonial() {
+  const sectionRef = useReveal()
   const trackRef = useRef<HTMLDivElement>(null)
   const posRef = useRef(0)
   const pausedRef = useRef(false)
@@ -97,13 +100,13 @@ export function Testimonial() {
   }, [])
 
   return (
-    <section id="testimonial" className="py-20 bg-[var(--surface2)]">
+    <section ref={sectionRef as React.RefObject<HTMLElement>} id="testimonial" className="py-20 bg-[var(--surface2)]">
 
       {/* Header */}
       <div className="px-4 sm:px-8 lg:px-[13%] mb-10 pb-8 border-b border-[var(--border)] flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <p className="label-tag mb-4">Testimonials</p>
-          <div className="accent-line" />
+
           <h2 className="section-title">
             Kata mereka yang sudah{' '}
             <span className="accent-gradient">bergabung</span>
