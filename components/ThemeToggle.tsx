@@ -2,7 +2,7 @@
 
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
-import { Sun, Moon } from 'lucide-react'
+import { Sun01Icon, Moon01Icon } from 'hugeicons-react'
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
@@ -20,7 +20,7 @@ export function ThemeToggle() {
       style={{ borderRadius: 'var(--r-md)' }}
       aria-label="Toggle theme"
     >
-      {theme === 'dark' ? <Sun size={13} /> : <Moon size={13} />}
+      {theme === 'dark' ? <Sun01Icon size={13} /> : <Moon01Icon size={13} />}
     </button>
   )
 }

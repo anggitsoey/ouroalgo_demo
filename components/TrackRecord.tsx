@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { AlertTriangle, Download, FileText, Cpu, BarChart2, ShieldCheck, Clock, ArrowRight } from 'lucide-react'
+import { Alert02Icon, Download01Icon, File01Icon, CpuIcon, BarChartIcon, Shield01Icon, Clock01Icon, ArrowRight01Icon } from 'hugeicons-react'
 import { useReveal } from '@/hooks/useReveal'
 
 const stats = [
@@ -79,7 +79,7 @@ export function TrackRecord() {
                 Sistem entry berbasis fungsi komposit yang mensyaratkan dua kondisi analitik terpenuhi secara bersamaan pada timeframe M15. EA tidak masuk pasar secara sembarangan — setiap posisi memiliki alasan kuantitatif yang terukur.
               </p>
               <a href="/oea" className="btn-primary inline-flex">
-                Pelajari Lebih Lanjut <ArrowRight size={12} />
+                Pelajari Lebih Lanjut <ArrowRight01Icon size={12} />
               </a>
             </div>
 
@@ -88,10 +88,10 @@ export function TrackRecord() {
               <p className="text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] mb-4">Spesifikasi</p>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { icon: Cpu,         label: 'Platform',    value: 'MetaTrader 5' },
-                  { icon: BarChart2,   label: 'Pair',        value: 'XAUUSD (Gold)' },
-                  { icon: Clock,       label: 'Timeframe',   value: 'M15' },
-                  { icon: ShieldCheck, label: 'Proteksi',    value: 'Max DD · News Filter' },
+                  { icon: CpuIcon,         label: 'Platform',    value: 'MetaTrader 5' },
+                  { icon: BarChartIcon,   label: 'Pair',        value: 'XAUUSD (Gold)' },
+                  { icon: Clock01Icon,       label: 'Timeframe',   value: 'M15' },
+                  { icon: Shield01Icon, label: 'Proteksi',    value: 'Max DD · News Filter' },
                 ].map(({ icon: Icon, label, value }) => (
                   <div key={label} className="flex items-start gap-2.5">
                     <Icon size={13} className="flex-shrink-0 mt-0.5" style={{ color: 'var(--primary)' }} />
@@ -170,7 +170,7 @@ export function TrackRecord() {
               className={`flex items-center justify-between gap-4 px-5 py-3.5 hover:bg-[var(--surface2)] transition-colors group ${i < backtests.length - 1 ? 'border-b border-[var(--border)]' : ''}`}
             >
               <div className="flex items-center gap-3">
-                <FileText size={13} className="flex-shrink-0" style={{ color: 'var(--muted)' }} />
+                <File01Icon size={13} className="flex-shrink-0" style={{ color: 'var(--muted)' }} />
                 <div>
                   <span className="text-[13px] font-medium text-[var(--text)]">{label}</span>
                   <span className="text-[12px] text-[var(--muted)] ml-3">Backtest Report · {period}</span>
@@ -178,7 +178,7 @@ export function TrackRecord() {
               </div>
               <div className="flex items-center gap-1.5 text-[12px] font-medium group-hover:gap-2 transition-all" style={{ color: 'var(--primary)' }}>
                 Download
-                <Download size={12} className="group-hover:translate-y-0.5 transition-transform" />
+                <Download01Icon size={12} className="group-hover:translate-y-0.5 transition-transform" />
               </div>
             </a>
           ))}
@@ -187,7 +187,7 @@ export function TrackRecord() {
         {/* Disclaimer */}
         <div className="flex items-start gap-2.5 p-3.5 border border-[var(--border)] bg-[var(--surface2)]"
              style={{ borderRadius: 'var(--r-md)' }}>
-          <AlertTriangle size={12} className="text-[var(--muted)] flex-shrink-0 mt-0.5" />
+          <Alert02Icon size={12} className="text-[var(--muted)] flex-shrink-0 mt-0.5" />
           <p className="text-[12px] text-[var(--muted)] leading-relaxed">
             <span className="text-[var(--text)]">Risk Warning:</span>{' '}
             Trading forex dan instrumen derivatif melibatkan risiko tinggi. Performa masa lalu tidak menjamin

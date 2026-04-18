@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { X } from 'lucide-react'
+import { Cancel01Icon } from 'hugeicons-react'
 
 const TARGET = new Date('2026-04-10T09:00:00+07:00').getTime()
 const BANNER_H = 64
@@ -89,7 +89,7 @@ export function AnnouncementBanner() {
           className="flex items-center justify-center w-7 h-7 rounded-full text-white/60 hover:text-white hover:bg-white/10 transition-colors ml-1"
           aria-label="Tutup"
         >
-          <X size={14} />
+          <Cancel01Icon size={14} />
         </button>
       </div>
     </div>

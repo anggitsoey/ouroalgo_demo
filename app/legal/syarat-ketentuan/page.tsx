@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft01Icon } from 'hugeicons-react'
 
 export const metadata = {
   title: 'Syarat & Ketentuan — OURO ALGO',
@@ -54,7 +54,7 @@ export default function SyaratKetentuan() {
             </span>
           </a>
           <Link href="/" className="btn-primary !py-1.5 !px-4 inline-flex items-center gap-1.5">
-            <ArrowLeft size={11} />
+            <ArrowLeft01Icon size={11} />
             Kembali ke Beranda
           </Link>
         </div>

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useState } from 'react'
-import { ChevronRight, ChevronDown } from 'lucide-react'
+import { ArrowRight02Icon, ArrowDown01Icon } from 'hugeicons-react'
 import { useReveal } from '@/hooks/useReveal'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -291,7 +291,7 @@ function FAQItem({ q, a, idx }: { q: string; a: string; idx: number }) {
           className="flex-shrink-0 w-5 h-5 flex items-center justify-center border border-[var(--border)] text-[var(--muted)] group-hover:border-[var(--primary-border)] group-hover:text-[var(--primary)] transition-all mt-0.5"
           style={{ borderRadius: 'var(--r-sm)' }}
         >
-          {open ? <ChevronDown size={11} /> : <ChevronRight size={11} />}
+          {open ? <ArrowDown01Icon size={11} /> : <ArrowRight02Icon size={11} />}
         </span>
       </button>
       {open && (
@@ -318,7 +318,7 @@ function MobileFAQCategory({ tab }: { tab: typeof TABS[0] }) {
           <span className="text-[11px] font-medium tracking-[0.1em] uppercase text-[var(--text)]">{tab.label}</span>
           <span className="text-[11px] text-[var(--muted)]">— {tab.items.length}</span>
         </div>
-        {open ? <ChevronDown size={13} style={{ color: 'var(--muted)', flexShrink: 0 }} /> : <ChevronRight size={13} style={{ color: 'var(--muted)', flexShrink: 0 }} />}
+        {open ? <ArrowDown01Icon size={13} style={{ color: 'var(--muted)', flexShrink: 0 }} /> : <ArrowRight02Icon size={13} style={{ color: 'var(--muted)', flexShrink: 0 }} />}
       </button>
       {open && (
         <div className="border-t border-[var(--border)] flex flex-col gap-2 p-3 bg-[var(--surface2)]">

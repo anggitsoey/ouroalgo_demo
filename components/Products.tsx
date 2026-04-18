@@ -1,11 +1,11 @@
 'use client'
 import React from 'react'
-import { Bot, Radio, GraduationCap, FlaskConical, ArrowRight } from 'lucide-react'
+import { Robot01Icon, Wifi01Icon, Mortarboard01Icon, TestTube01Icon, ArrowRight01Icon } from 'hugeicons-react'
 import { useReveal } from '@/hooks/useReveal'
 
 const products = [
   {
-    icon: Bot,
+    icon: Robot01Icon,
     code: 'EA',
     tag: 'Automated',
     title: 'Expert Advisor',
@@ -17,7 +17,7 @@ const products = [
     imgPosition: 'center',
   },
   {
-    icon: Radio,
+    icon: Wifi01Icon,
     code: 'SIG',
     tag: 'Real-time',
     title: 'Signal & Copy Trading',
@@ -29,7 +29,7 @@ const products = [
     imgPosition: 'center',
   },
   {
-    icon: GraduationCap,
+    icon: Mortarboard01Icon,
     code: 'EDU',
     tag: 'Education',
     title: 'Kelas & Edukasi',
@@ -41,7 +41,7 @@ const products = [
     imgPosition: 'center',
   },
   {
-    icon: FlaskConical,
+    icon: TestTube01Icon,
     code: 'RSC',
     tag: 'Research',
     title: 'Algo Research',
@@ -129,7 +129,7 @@ export function Products() {
                 className="flex items-center gap-1.5 text-[13px] tracking-[0.06em] font-medium text-[var(--primary)] hover:text-[var(--primary-light)] transition-colors group/link"
               >
                 Lihat Paket
-                <ArrowRight size={12} className="group-hover/link:translate-x-0.5 transition-transform" />
+                <ArrowRight01Icon size={12} className="group-hover/link:translate-x-0.5 transition-transform" />
               </a>
               </div>{/* end content */}
             </div>

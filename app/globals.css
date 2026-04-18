@@ -14,46 +14,65 @@
    --border         Default border
    --text           Body text
    --muted          Secondary text
-   --radius-*       Border radius tokens
+   --dim            Tertiary / placeholder text
+   --shadow-*       Shadow tokens
+   --r-*            Radius tokens
 ═══════════════════════════════════════════════ */
 
 @layer base {
   :root {
     /* ── Accent ── */
-    --primary:       #3B82F6;
-    --primary-light: #60A5FA;
-    --primary-dark:  #2563EB;
-    --primary-dim:   rgba(59, 130, 246, 0.08);
-    --primary-border:rgba(59, 130, 246, 0.22);
+    --primary:        #3B82F6;
+    --primary-light:  #60A5FA;
+    --primary-dark:   #2563EB;
+    --primary-dim:    rgba(59, 130, 246, 0.08);
+    --primary-border: rgba(59, 130, 246, 0.25);
 
-    /* ── Light mode surfaces ── */
-    --bg:       #F0F4FF;
+    /* ── Light mode surfaces (neutral, no color tint) ── */
+    --bg:       #F2F2F2;
     --surface:  #FFFFFF;
-    --surface2: #E4ECFF;
-    --border:   #C4D4F4;
-    --text:     #080C1A;
-    --muted:    #4A5E8A;
-    --dim:      #8A9EC0;
+    --surface2: #F7F7F7;
+    --border:   #E4E4E4;
+    --text:     #0A0A0A;
+    --muted:    #6B6B6B;
+    --dim:      #A3A3A3;
+    --grid-opacity: 0.2;
+    --grid-color:   #ADADB8;
+
+    /* ── Shadows (light mode) ── */
+    --shadow-sm:   0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md:   0 1px 4px rgba(0,0,0,0.07), 0 2px 8px rgba(0,0,0,0.04);
+    --shadow-lg:   0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
 
     /* ── Frosted glass ── */
-    --frosted-bg: rgba(236, 242, 255, 0.85);
+    --frosted-bg: rgba(255, 255, 255, 0.85);
 
     /* ── Radius ── */
-    --r-sm: 2px;
-    --r:    3px;
-    --r-md: 4px;
-    --r-lg: 6px;
+    --r-sm: 3px;
+    --r:    4px;
+    --r-md: 6px;
+    --r-lg: 8px;
   }
 
   .dark {
+    --grid-opacity:   0.14;
+    --grid-color:     var(--border);
+    --primary-dim:    rgba(59, 130, 246, 0.10);
+    --primary-border: rgba(59, 130, 246, 0.22);
+
     --bg:       #0C0C0C;
-    --frosted-bg: rgba(18, 18, 18, 0.88);
-    --surface:  #141414;
-    --surface2: #1A1A1A;
-    --border:   #2E2E2E;
-    --text:     #F0F0F0;
-    --muted:    #A0A0A0;
+    --surface:  #161616;
+    --surface2: #1E1E1E;
+    --border:   #2A2A2A;
+    --text:     #EFEFEF;
+    --muted:    #999999;
     --dim:      #555555;
+
+    --shadow-sm:  0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md:  0 1px 4px rgba(0,0,0,0.4);
+    --shadow-lg:  0 4px 16px rgba(0,0,0,0.5);
+
+    --frosted-bg: rgba(18, 18, 18, 0.88);
   }
 
   * {
@@ -85,6 +104,61 @@
   ::-webkit-scrollbar       { width: 4px; height: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--primary-dark); border-radius: 2px; }
+}
+
+/* ═══════════════════════════════════════════════
+   PORTAL — scoped design tokens
+   Apply .portal class to the portal layout wrapper.
+   Landing page tokens remain untouched.
+═══════════════════════════════════════════════ */
+.portal {
+  --bg:          #FFFFFF;
+  --surface:     #FFFFFF;
+  --surface2:    #F5F6F8;
+  --sidebar-bg:  #ECEEF2;
+  --border:      #E5E7EB;
+  --text:        #111827;
+  --muted:       #6B7280;
+  --dim:         #9CA3AF;
+
+  --primary:        #3B82F6;
+  --primary-light:  #60A5FA;
+  --primary-dim:    rgba(59,130,246,0.08);
+  --primary-border: rgba(59,130,246,0.25);
+
+  --shadow-sm:  0 1px 2px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.03);
+  --shadow-md:  0 4px 8px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-lg:  0 10px 24px rgba(0,0,0,0.07), 0 2px 8px rgba(0,0,0,0.04);
+
+  --r-sm:  4px;
+  --r:     6px;
+  --r-md:  8px;
+  --r-lg: 12px;
+
+  --nav-active-bg:     #111827;
+  --nav-active-text:   #FFFFFF;
+  --nav-section-color: #9CA3AF;
+  --nav-hover-bg:      rgba(0,0,0,0.06);
+}
+
+.portal-dark {
+  --bg:          #18191C;
+  --surface:     #1E2024;
+  --surface2:    #242629;
+  --sidebar-bg:  #0D0E10;
+  --border:      #2C2D32;
+  --text:        #F0F0F0;
+  --muted:       #8B8D93;
+  --dim:         #555962;
+
+  --shadow-sm:  none;
+  --shadow-md:  none;
+  --shadow-lg:  none;
+
+  --nav-active-bg:     #F0F0F0;
+  --nav-active-text:   #111111;
+  --nav-section-color: #555962;
+  --nav-hover-bg:      rgba(255,255,255,0.05);
 }
 
 /* ═══════════════════════════════════════════════
@@ -120,11 +194,13 @@
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
     @apply p-5 transition-all duration-150;
-    border-radius: var(--r-md);
+    border-radius: var(--r-lg);
   }
   .card:hover {
     border-color: var(--primary-border);
+    box-shadow: var(--shadow-md);
   }
 
   /* ── Cursor glow card ── */
@@ -220,8 +296,8 @@
   /* ── Grid overlay (decorative) ── */
   .grid-overlay {
     background-image:
-      linear-gradient(var(--border) 1.5px, transparent 1.5px),
-      linear-gradient(90deg, var(--border) 1.5px, transparent 1.5px);
+      linear-gradient(var(--grid-color, var(--border)) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color, var(--border)) 1px, transparent 1px);
     background-size: 48px 48px;
   }
 

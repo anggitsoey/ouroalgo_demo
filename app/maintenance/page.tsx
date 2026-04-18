@@ -1,4 +1,4 @@
-import { Construction } from 'lucide-react'
+import { ToolsIcon } from 'hugeicons-react'
 import Link from 'next/link'
 
 export default function MaintenancePage() {
@@ -15,7 +15,7 @@ export default function MaintenancePage() {
         className="w-14 h-14 flex items-center justify-center mb-6 border border-[var(--border)]"
         style={{ borderRadius: 'var(--r-md)', background: 'var(--surface)' }}
       >
-        <Construction size={22} style={{ color: 'var(--muted)' }} />
+        <ToolsIcon size={22} style={{ color: 'var(--muted)' }} />
       </div>
 
       {/* Copy */}

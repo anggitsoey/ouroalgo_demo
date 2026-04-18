@@ -1,4 +1,4 @@
-import { Send, AlertTriangle } from 'lucide-react'
+import { SentIcon, Alert02Icon } from 'hugeicons-react'
 
 const TELEGRAM_ICON = (
   <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
@@ -62,7 +62,7 @@ export function Footer() {
           <div className="flex gap-2 flex-shrink-0">
             <a href="#pricing" className="btn-primary">Lihat Paket</a>
             <a href="https://t.me/+GLyNWZmhRqJjODBl" target="_blank" rel="noopener noreferrer" className="btn-secondary">
-              <Send size={12} />
+              <SentIcon size={12} />
               Telegram
             </a>
           </div>
@@ -129,7 +129,7 @@ export function Footer() {
         {/* Risk Warning */}
         <div className="flex items-start gap-2.5 p-3.5 border border-[var(--border)] bg-[var(--surface2)] mb-8"
              style={{ borderRadius: 'var(--r-md)' }}>
-          <AlertTriangle size={12} className="text-[var(--muted)] flex-shrink-0 mt-0.5" />
+          <Alert02Icon size={12} className="text-[var(--muted)] flex-shrink-0 mt-0.5" />
           <p className="text-[13px] text-[var(--muted)] leading-relaxed">
             <span className="text-[var(--text)]">Risk Warning:</span>{' '}
             Trading forex, komoditas, dan instrumen derivatif mengandung risiko tinggi dan tidak cocok untuk semua investor.

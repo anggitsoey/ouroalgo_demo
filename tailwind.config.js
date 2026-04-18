@@ -36,8 +36,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['DM Mono', 'Courier New', 'monospace'],
-        mono: ['DM Mono', 'Courier New', 'monospace'],
+        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Courier New', 'monospace'],
       },
       borderRadius: {
         DEFAULT: '3px',

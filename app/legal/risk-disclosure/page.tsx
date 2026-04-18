@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowLeft, AlertTriangle } from 'lucide-react'
+import { ArrowLeft01Icon, Alert02Icon } from 'hugeicons-react'
 
 export const metadata = {
   title: 'Risk Disclosure — OURO ALGO',
@@ -54,7 +54,7 @@ export default function RiskDisclosure() {
             </span>
           </a>
           <Link href="/" className="btn-primary !py-1.5 !px-4 inline-flex items-center gap-1.5">
-            <ArrowLeft size={11} />
+            <ArrowLeft01Icon size={11} />
             Kembali ke Beranda
           </Link>
         </div>
@@ -77,7 +77,7 @@ export default function RiskDisclosure() {
         {/* Warning banner */}
         <div className="flex items-start gap-3 p-4 mb-10 border border-[var(--border)] bg-[var(--surface2)]"
              style={{ borderRadius: 'var(--r-md)' }}>
-          <AlertTriangle size={15} className="flex-shrink-0 mt-0.5" style={{ color: 'var(--primary)' }} />
+          <Alert02Icon size={15} className="flex-shrink-0 mt-0.5" style={{ color: 'var(--primary)' }} />
           <p className="text-[13px] text-[var(--muted)] leading-relaxed">
             <span className="text-[var(--text)] font-medium">Perhatian Penting:</span>{' '}
             Trading instrumen finansial melibatkan risiko tinggi. Dokumen ini wajib dibaca dan dipahami

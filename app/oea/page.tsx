@@ -3,15 +3,15 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react'
 
-import { Cpu, BarChart2, ShieldCheck, Clock, ArrowLeft, ArrowRight, Check, AlertTriangle, Download, FileText, X, Send } from 'lucide-react'
+import { CpuIcon, BarChartIcon, Shield01Icon, Clock01Icon, ArrowLeft01Icon, ArrowRight01Icon, Tick01Icon, Alert02Icon, Download01Icon, File01Icon, Cancel01Icon, SentIcon } from 'hugeicons-react'
 
 const DRIVE_FOLDER = 'https://drive.google.com/drive/folders/1OCQATdnrRHqapOfOrqVhlA5qoIPfUG_F?usp=drive_link'
 
 const specs = [
-  { icon: Cpu,         label: 'Platform',  value: 'MetaTrader 5' },
-  { icon: BarChart2,   label: 'Pair',      value: 'XAUUSD (Gold)' },
-  { icon: Clock,       label: 'Timeframe', value: 'M15' },
-  { icon: ShieldCheck, label: 'Proteksi',  value: 'Max DD · News Filter' },
+  { icon: CpuIcon,         label: 'Platform',  value: 'MetaTrader 5' },
+  { icon: BarChartIcon,   label: 'Pair',      value: 'XAUUSD (Gold)' },
+  { icon: Clock01Icon,       label: 'Timeframe', value: 'M15' },
+  { icon: Shield01Icon, label: 'Proteksi',  value: 'Max DD · News Filter' },
 ]
 
 const chips = ['Smart Distance', 'Spread Filter', 'News Filter', 'Auto TP Basket', 'Max Drawdown Guard', 'Trading Hours']
@@ -229,7 +229,7 @@ function OeaNavbar() {
           </span>
         </a>
         <a href="/" className="btn-primary !py-1.5 !px-4 inline-flex items-center gap-1.5">
-          <ArrowLeft size={11} />
+          <ArrowLeft01Icon size={11} />
           Kembali ke Beranda
         </a>
       </nav>
@@ -274,7 +274,7 @@ export default function EAPage() {
             className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center border border-[var(--border)] text-[var(--muted)] hover:text-[var(--text)] transition-colors"
             style={{ borderRadius: 'var(--r-md)', background: 'var(--surface)' }}
           >
-            <X size={14} />
+            <Cancel01Icon size={14} />
           </button>
           <img
             src={lightbox}
@@ -307,7 +307,7 @@ export default function EAPage() {
               Expert Advisor otomatis berbasis MetaTrader 5, dioptimasi khusus untuk XAUUSD.<br />Sistem entry selektif dengan manajemen risiko berlapis — dirancang untuk performa konsisten jangka panjang.
             </p>
             <div className="flex flex-wrap gap-2">
-              <a href="/#pricing" className="btn-primary">Lihat Paket <ArrowRight size={12} /></a>
+              <a href="/#pricing" className="btn-primary">Lihat Paket <ArrowRight01Icon size={12} /></a>
               <a href="/#track-record" className="btn-secondary">Track Record</a>
             </div>
           </div>
@@ -461,14 +461,14 @@ export default function EAPage() {
               className={`flex items-center justify-between gap-4 px-5 py-3.5 hover:bg-[var(--surface2)] transition-colors group ${i < backtests.length - 1 ? 'border-b border-[var(--border)]' : ''}`}
             >
               <div className="flex items-center gap-3">
-                <FileText size={13} className="flex-shrink-0" style={{ color: 'var(--muted)' }} />
+                <File01Icon size={13} className="flex-shrink-0" style={{ color: 'var(--muted)' }} />
                 <div>
                   <span className="text-[13px] font-medium text-[var(--text)]">{label}</span>
                   <span className="text-[12px] text-[var(--muted)] ml-3">Backtest Report · {period}</span>
                 </div>
               </div>
               <div className="flex items-center gap-1.5 text-[12px] font-medium group-hover:gap-2 transition-all" style={{ color: 'var(--primary)' }}>
-                Download <Download size={12} className="group-hover:translate-y-0.5 transition-transform" />
+                Download <Download01Icon size={12} className="group-hover:translate-y-0.5 transition-transform" />
               </div>
             </a>
           ))}
@@ -477,7 +477,7 @@ export default function EAPage() {
         {/* Risk warning */}
         <div className="flex items-start gap-2.5 p-3.5 mt-3 border border-[var(--border)] bg-[var(--surface2)]"
              style={{ borderRadius: 'var(--r-md)' }}>
-          <AlertTriangle size={12} className="text-[var(--muted)] flex-shrink-0 mt-0.5" />
+          <Alert02Icon size={12} className="text-[var(--muted)] flex-shrink-0 mt-0.5" />
           <p className="text-[12px] text-[var(--muted)] leading-relaxed">
             <span className="text-[var(--text)]">Risk Warning:</span>{' '}
             Trading forex dan instrumen derivatif melibatkan risiko tinggi. Performa masa lalu tidak menjamin hasil di masa depan. Investasikan hanya dana yang siap dirugikan.
@@ -524,9 +524,9 @@ export default function EAPage() {
           </p>
         </div>
         <div className="flex gap-2">
-          <a href="/#pricing" className="btn-primary">Lihat Paket <ArrowRight size={12} /></a>
+          <a href="/#pricing" className="btn-primary">Lihat Paket <ArrowRight01Icon size={12} /></a>
           <a href="https://t.me/+GLyNWZmhRqJjODBl" target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex items-center gap-1.5">
-            <Send size={11} />
+            <SentIcon size={11} />
             Telegram
           </a>
         </div>

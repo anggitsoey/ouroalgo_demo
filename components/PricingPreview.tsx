@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { ArrowRight, Check, X, Timer } from 'lucide-react'
+import { ArrowRight01Icon, Tick01Icon, Cancel01Icon, Timer01Icon } from 'hugeicons-react'
 import { useReveal } from '@/hooks/useReveal'
 
 const TARGET_DATE = new Date('2026-04-12T09:00:00+07:00').getTime()
@@ -280,7 +280,7 @@ export function PricingPreview() {
                   <ul className="space-y-1.5">
                     {includes.map((f) => (
                       <li key={f} className="flex items-start gap-1.5 text-[13px] text-[var(--muted)]">
-                        <Check size={9} className="flex-shrink-0 mt-0.5" style={{ color: isPremium ? AMBER : 'var(--primary)' }} />
+                        <Tick01Icon size={9} className="flex-shrink-0 mt-0.5" style={{ color: isPremium ? AMBER : 'var(--primary)' }} />
                         {f}
                       </li>
                     ))}
@@ -292,7 +292,7 @@ export function PricingPreview() {
                   rel="noopener noreferrer"
                   className="btn-primary w-full justify-center text-[10px]"
                 >
-                  Mulai {name} <ArrowRight size={11} />
+                  Mulai {name} <ArrowRight01Icon size={11} />
                 </a>
               </div>
               </div>
@@ -335,7 +335,7 @@ export function PricingPreview() {
                 ))}
               </ul>
               <div className="btn-secondary w-full justify-center text-[10px]">
-                {customOpen ? 'Tutup' : 'Buat Custom'} <ArrowRight size={11} />
+                {customOpen ? 'Tutup' : 'Buat Custom'} <ArrowRight01Icon size={11} />
               </div>
             </div>
           </div>
@@ -354,7 +354,7 @@ export function PricingPreview() {
                 onClick={() => { setCustomOpen(false); reset() }}
                 className="text-[var(--muted)] hover:text-[var(--text)] transition-colors"
               >
-                <X size={13} />
+                <Cancel01Icon size={13} />
               </button>
             </div>
 
@@ -381,7 +381,7 @@ export function PricingPreview() {
                             {selected && (
                               <div className="absolute top-2.5 right-2.5 w-4 h-4 flex items-center justify-center"
                                    style={{ background: 'var(--primary)', borderRadius: '50%' }}>
-                                <Check size={9} color="#080C09" />
+                                <Tick01Icon size={9} color="#080C09" />
                               </div>
                             )}
                             <p className="text-[14px] font-medium text-[var(--text)] mb-2">{opt.name}</p>
@@ -421,7 +421,7 @@ export function PricingPreview() {
                           <p className="text-[13px] font-medium text-[var(--text)] flex-1 leading-snug">{item.name}</p>
                           <button onClick={() => remove(item.id)}
                                   className="text-[var(--muted)] hover:text-[var(--text)] transition-colors">
-                            <X size={10} />
+                            <Cancel01Icon size={10} />
                           </button>
                         </div>
                         <div className="flex items-center justify-between">
@@ -462,7 +462,7 @@ export function PricingPreview() {
                   onClick={e => { if (selections.length === 0) e.preventDefault() }}
                   className={`btn-primary w-full justify-center mb-3 ${selections.length === 0 ? 'opacity-40 cursor-not-allowed pointer-events-none' : ''}`}
                 >
-                  Lanjutkan <ArrowRight size={11} />
+                  Lanjutkan <ArrowRight01Icon size={11} />
                 </a>
               </div>
             </div>

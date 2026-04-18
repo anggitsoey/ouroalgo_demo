@@ -1,29 +1,29 @@
 'use client'
 import React from 'react'
-import { FlaskConical, BarChart2, Shield, Handshake } from 'lucide-react'
+import { TestTube01Icon, BarChartIcon, Shield01Icon, Agreement01Icon } from 'hugeicons-react'
 import { useReveal } from '@/hooks/useReveal'
 
 const pillars = [
   {
-    icon: FlaskConical,
+    icon: TestTube01Icon,
     code: '01',
     title: 'Berbasis Riset Algoritmik',
     desc: 'Setiap strategi diuji secara kuantitatif sebelum live. Bukan spekulasi, murni data.',
   },
   {
-    icon: BarChart2,
+    icon: BarChartIcon,
     code: '02',
     title: 'Track Record Transparan',
     desc: 'Semua performa dapat diverifikasi langsung via Myfxbook. Tidak ada yang disembunyikan.',
   },
   {
-    icon: Shield,
+    icon: Shield01Icon,
     code: '03',
     title: 'Ekosistem Lengkap',
     desc: 'EA, signal, edukasi, dan laporan riset. Semua dalam satu platform terintegrasi.',
   },
   {
-    icon: Handshake,
+    icon: Agreement01Icon,
     code: '04',
     title: 'Skin in the Game',
     desc: 'Kami trading menggunakan sistem yang sama yang kami jual. Kepentingan kami selaras.',

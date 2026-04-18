@@ -2,7 +2,7 @@
 
 'use client'
 import { useState } from 'react'
-import { ArrowRight, Bot, Radio, BookOpen, FlaskConical } from 'lucide-react'
+import { ArrowRight01Icon, Robot01Icon, Wifi01Icon, BookOpen01Icon, TestTube01Icon } from 'hugeicons-react'
 
 const ecosystem = [
   {
@@ -10,7 +10,7 @@ const ecosystem = [
     label: 'Expert Advisor',
     desc: 'Otomasi trading MT5',
     detail: 'Algoritma berjalan 24/5, dioptimasi dari data historis bertahun-tahun.',
-    icon: Bot,
+    icon: Robot01Icon,
     stat: '98.2% uptime',
   },
   {
@@ -18,7 +18,7 @@ const ecosystem = [
     label: 'Signal & Copy Trading',
     desc: 'Sinyal live terverifikasi',
     detail: 'Entry & exit berbasis analisis algoritmik, dikirim real-time ke Telegram.',
-    icon: Radio,
+    icon: Wifi01Icon,
     stat: 'Live verified',
   },
   {
@@ -26,7 +26,7 @@ const ecosystem = [
     label: 'Kelas & Edukasi',
     desc: 'Kuasai algo dari dasar',
     detail: 'Kurikulum dari nol hingga bisa membangun EA sendiri secara sistematis.',
-    icon: BookOpen,
+    icon: BookOpen01Icon,
     stat: 'Self-paced',
   },
   {
@@ -34,7 +34,7 @@ const ecosystem = [
     label: 'Algo Research',
     desc: 'Riset & backtest premium',
     detail: 'Laporan strategi, parameter optimasi, dan analisis walk-forward terkini.',
-    icon: FlaskConical,
+    icon: TestTube01Icon,
     stat: 'Monthly report',
   },
 ]
@@ -118,7 +118,7 @@ export function Hero() {
         maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)',
         WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)',
       }}>
-        <div className="absolute inset-0 grid-overlay opacity-[0.14]" />
+        <div className="absolute inset-0 grid-overlay" style={{ opacity: 'var(--grid-opacity)' }} />
       </div>
 
       {/* Accent edge — top */}
@@ -160,11 +160,11 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-2">
               <a href="#pricing" className="btn-primary">
                 Pricing
-                <ArrowRight size={13} />
+                <ArrowRight01Icon size={13} />
               </a>
               <a href="#track-record" className="btn-secondary">
                 Track Record
-                <ArrowRight size={13} />
+                <ArrowRight01Icon size={13} />
               </a>
             </div>
           </div>
