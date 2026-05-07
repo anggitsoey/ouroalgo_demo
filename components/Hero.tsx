@@ -113,15 +113,22 @@ function EcosystemGraph() {
 export function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col justify-center px-4 sm:px-8 lg:px-[13%] pt-14 overflow-hidden">
-      {/* Grid background with round fade */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)',
-        WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)',
-      }}>
-        <div className="absolute inset-0 grid-overlay" style={{ opacity: 'var(--grid-opacity)' }} />
+      {/* Hero background image */}
+      <div className="absolute inset-0 pointer-events-none">
+        <img
+          src="/hero-bg.png"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-top"
+          style={{ opacity: 0.35, mixBlendMode: 'screen' }}
+        />
+        {/* Fade bottom */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(to bottom, transparent 40%, var(--bg) 100%)',
+        }} />
       </div>
 
-      {/* Accent edge — top */}
+
+{/* Accent edge — top */}
       <div className="absolute top-0 left-[13%] right-[13%] h-px pointer-events-none"
            style={{ background: 'linear-gradient(90deg, transparent, var(--primary-border), transparent)' }} />
 
@@ -143,17 +150,15 @@ export function Hero() {
 
             {/* Headline */}
             <h1 className="text-[clamp(28px,4.5vw,52px)] font-medium leading-[1.08] tracking-[-0.025em] mb-5">
-              Trading lebih cerdas
+              Pendekatan{' '}
+              <span className="accent-gradient">sistematis</span>
               <br />
-              dengan{' '}
-              <span className="accent-gradient">algoritma</span>
-              <br />
-              berbasis riset
+              untuk pasar yang{' '}
+              <span className="accent-gradient">dinamis</span>
             </h1>
 
             <p className="text-[13px] text-[var(--muted)] leading-relaxed mb-8 max-w-lg">
-              OURO ALGO menyediakan Expert Advisor, signal, edukasi, dan riset
-              algoritmik dalam satu ekosistem — transparan, terukur, terbukti.
+              OURO ALGO. Ekosistem terintegrasi yang menggabungkan strategi, eksekusi, riset, dan edukasi dalam satu platform.
             </p>
 
             {/* CTAs */}
@@ -162,7 +167,7 @@ export function Hero() {
                 Pricing
                 <ArrowRight01Icon size={13} />
               </a>
-              <a href="#track-record" className="btn-secondary">
+              <a href="https://www.myfxbook.com/members/ouroalgo/ouro-exponent-algo-oea/12030217" target="_blank" rel="noopener noreferrer" className="btn-secondary" >
                 Track Record
                 <ArrowRight01Icon size={13} />
               </a>

@@ -446,7 +446,7 @@ export default function EAPage() {
         <div className="border border-[var(--border)] bg-[var(--surface)] overflow-hidden" style={{ borderRadius: 'var(--r-lg)' }}>
           <div className="px-5 py-3 border-b border-[var(--border)] bg-[var(--surface2)] flex items-center justify-between">
             <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)]">OuroExponentAlgo v1.0</span>
-            <a href="/maintenance" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.myfxbook.com/members/ouroalgo/ouro-exponent-algo-oea/12030217" target="_blank" rel="noopener noreferrer"
                className="text-[11px] transition-colors hover:text-[var(--primary)]"
                style={{ color: 'var(--muted)' }}>
               Lihat di Myfxbook →

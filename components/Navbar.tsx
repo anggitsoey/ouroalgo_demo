@@ -1,8 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Menu01Icon, Cancel01Icon, Sun01Icon, Moon01Icon } from 'hugeicons-react'
-import { useTheme } from 'next-themes'
+import { Menu01Icon, Cancel01Icon } from 'hugeicons-react'
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -25,7 +24,6 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [navPadding, setNavPadding] = useState('0 13%')
   const [activeSection, setActiveSection] = useState('')
-  const { theme, setTheme } = useTheme()
 
   useEffect(() => {
     const update = () => {
@@ -111,13 +109,6 @@ export function Navbar() {
 
         {/* Right */}
         <div className="hidden lg:flex items-center gap-2">
-          <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="w-8 h-8 flex items-center justify-center border border-[var(--border)] text-[var(--muted)] hover:text-[var(--text)] transition-colors"
-            style={{ borderRadius: 'var(--r-md)' }}
-          >
-            {theme === 'dark' ? <Sun01Icon size={14} /> : <Moon01Icon size={14} />}
-          </button>
           <a href="#pricing" className="btn-primary text-[10px] py-2 px-4">
             Lihat Paket
           </a>
@@ -125,13 +116,6 @@ export function Navbar() {
 
         {/* Mobile & Tablet */}
         <div className="flex lg:hidden items-center gap-2">
-          <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="w-8 h-8 flex items-center justify-center border border-[var(--border)] text-[var(--muted)] hover:text-[var(--text)] transition-colors"
-            style={{ borderRadius: 'var(--r-md)' }}
-          >
-            {theme === 'dark' ? <Sun01Icon size={14} /> : <Moon01Icon size={14} />}
-          </button>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="w-8 h-8 flex items-center justify-center border border-[var(--border)] text-[var(--muted)]"

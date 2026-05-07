@@ -44,7 +44,7 @@ export function TrackRecord() {
             </h2>
           </div>
           <a
-            href="/maintenance"
+            href="https://www.myfxbook.com/members/ouroalgo/ouro-exponent-algo-oea/12030217"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary inline-flex"
@@ -78,9 +78,19 @@ export function TrackRecord() {
               <p className="text-[13px] text-[var(--muted)] leading-relaxed mb-6">
                 Sistem entry berbasis fungsi komposit yang mensyaratkan dua kondisi analitik terpenuhi secara bersamaan pada timeframe M15. EA tidak masuk pasar secara sembarangan — setiap posisi memiliki alasan kuantitatif yang terukur.
               </p>
-              <a href="/oea" className="btn-primary inline-flex">
-                Pelajari Lebih Lanjut <ArrowRight01Icon size={12} />
-              </a>
+              <div className="flex flex-wrap gap-2">
+                <a href="/oea" className="btn-primary inline-flex">
+                  Pelajari Lebih Lanjut <ArrowRight01Icon size={12} />
+                </a>
+                <a
+                  href="https://www.myfxbook.com/members/ouroalgo/ouro-exponent-algo-oea/12030217"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary inline-flex"
+                >
+                  Track Record <ArrowRight01Icon size={12} />
+                </a>
+              </div>
             </div>
 
             {/* Right — specs */}
@@ -115,45 +125,7 @@ export function TrackRecord() {
           </div>
         </div>
 
-        {/* Stats banner card */}
-        <div
-          className="relative overflow-hidden mb-3"
-          style={{
-            borderRadius: 'var(--r-lg)',
-            background: 'var(--surface)',
-            border: '1px solid var(--border)',
-          }}
-        >
-          <div className="relative grid lg:grid-cols-[1fr_3fr] gap-0">
-
-            {/* Left — identity */}
-            <div className="p-6 flex flex-col justify-center gap-3 border-b lg:border-b-0 lg:border-r border-[var(--border)]">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 w-fit"
-                   style={{ background: 'var(--primary-dim)', borderRadius: 'var(--r-sm)', border: '1px solid var(--primary-border)' }}>
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] animate-pulse" />
-                <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--primary)]">Live Account</span>
-              </div>
-              <p className="text-[13px] text-[var(--muted)] leading-relaxed">Performa terverifikasi</p>
-              <p className="text-[15px] font-semibold text-[var(--text)] leading-snug">via Myfxbook</p>
-            </div>
-
-            {/* Right — stats grid */}
-            <div className="grid grid-cols-2 lg:grid-cols-4">
-              {stats.map(({ value, label, sub }, i) => (
-                <div
-                  key={label}
-                  className={`p-6 flex flex-col justify-center gap-1.5 ${statBorder[i]}`}
-                >
-                  <p className="text-[32px] font-bold text-[var(--text)] tracking-tight leading-none">{value}</p>
-                  <p className="text-[14px] font-medium text-[var(--text)]">{label}</p>
-                  <p className="text-[12px] text-[var(--muted)]">{sub}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Backtest Downloads */}
+{/* Backtest Downloads */}
         <div className="mb-3" style={{ border: '1px solid var(--border)', borderRadius: 'var(--r-lg)', overflow: 'hidden', background: 'var(--surface)' }}>
           {/* Label */}
           <div className="px-5 py-3 border-b border-[var(--border)]">
