@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React from 'react'
 import { useState, useEffect, useRef } from 'react'
@@ -69,10 +69,10 @@ const statBorder = [
 ]
 
 const backtests = [
-  { label: 'Initial Deposit $200',   period: '2020 – 2025' },
-  { label: 'Initial Deposit $500',   period: '2020 – 2025' },
-  { label: 'Initial Deposit $1,000', period: '2020 – 2025' },
-  { label: 'Initial Deposit $5,000', period: '2020 – 2025' },
+  { label: 'Initial Deposit $200',   period: '2020 — 2025' },
+  { label: 'Initial Deposit $500',   period: '2020 — 2025' },
+  { label: 'Initial Deposit $1,000', period: '2020 — 2025' },
+  { label: 'Initial Deposit $5,000', period: '2020 — 2025' },
 ]
 
 const testiItems = [
@@ -88,7 +88,7 @@ const testiItems = [
   },
   {
     handle: '@f*****z',
-    text: 'Pake broker yang sama, setting EA yang sama. Sejauh ini memuaskan, baik dari EA-nya maupun dari signal VIP yang manual. Kalau EA entry, ikut entry manual di akun berbeda. Ditunggu update EA berikutnya! 🔥',
+    text: 'Pake broker yang sama, setting EA yang sama. Sejauh ini memuaskan, baik dari EA-nya maupun dari signal VIP yang manual. Kalau EA entry, ikut entry manual di akun berbeda. Ditunggu update EA berikutnya! ðŸ”¥',
     img: '/testi-ss/testi-3.jpg',
   },
   {
@@ -318,7 +318,7 @@ export default function EAPage() {
               <div
                 key={label}
                 className="glow-card flex items-center gap-4 px-5 py-4 border border-[var(--border)] bg-[var(--surface)]"
-                style={{ borderRadius: 'var(--r-md)' }}
+                style={{ borderRadius: 'var(--r-lg)' }}
               >
                 <div
                   className="flex-shrink-0 w-9 h-9 flex items-center justify-center border border-[var(--border)] bg-[var(--surface2)]"
@@ -446,10 +446,10 @@ export default function EAPage() {
         <div className="border border-[var(--border)] bg-[var(--surface)] overflow-hidden" style={{ borderRadius: 'var(--r-lg)' }}>
           <div className="px-5 py-3 border-b border-[var(--border)] bg-[var(--surface2)] flex items-center justify-between">
             <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)]">OuroExponentAlgo v1.0</span>
-            <a href="https://www.myfxbook.com/members/ouroalgo/ouro-exponent-algo-oea/12030217" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.myfxbook.com/members/ouroalgo/ouro-exponent-algo-oea/12042613" target="_blank" rel="noopener noreferrer"
                className="text-[11px] transition-colors hover:text-[var(--primary)]"
                style={{ color: 'var(--muted)' }}>
-              Lihat di Myfxbook →
+              Lihat di Myfxbook â†’
             </a>
           </div>
           {backtests.map(({ label, period }, i) => (
@@ -534,3 +534,4 @@ export default function EAPage() {
     </div>
   )
 }
+

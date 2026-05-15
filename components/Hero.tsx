@@ -1,6 +1,4 @@
-'use client'
-
-'use client'
+﻿'use client'
 import { useState } from 'react'
 import { ArrowRight01Icon, Robot01Icon, Wifi01Icon, BookOpen01Icon, TestTube01Icon } from 'hugeicons-react'
 
@@ -55,7 +53,7 @@ function EcosystemGraph() {
               onMouseLeave={() => setHovered(null)}
               className="glow-card relative flex items-center gap-5 px-5 py-4 border cursor-default overflow-hidden"
               style={{
-                borderRadius: 'var(--r-md)',
+                borderRadius: 'var(--r-lg)',
                 background: isHovered ? 'var(--primary-dim)' : 'var(--surface)',
                 borderColor: isHovered ? 'var(--primary-border)' : 'var(--border)',
                 transition: 'all 0.2s ease',
@@ -144,7 +142,7 @@ export function Hero() {
                  style={{ borderRadius: 'var(--r-sm)' }}>
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] animate-pulse" />
               <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--primary)]">
-                Live · Track Record Terverifikasi
+                Live &middot; Track Record Terverifikasi
               </span>
             </div>
 
@@ -167,7 +165,7 @@ export function Hero() {
                 Pricing
                 <ArrowRight01Icon size={13} />
               </a>
-              <a href="https://www.myfxbook.com/members/ouroalgo/ouro-exponent-algo-oea/12030217" target="_blank" rel="noopener noreferrer" className="btn-secondary" >
+              <a href="https://www.myfxbook.com/members/ouroalgo/ouro-exponent-algo-oea/12042613" target="_blank" rel="noopener noreferrer" className="btn-secondary" >
                 Track Record
                 <ArrowRight01Icon size={13} />
               </a>
@@ -196,3 +194,4 @@ export function Hero() {
     </section>
   )
 }
+

@@ -45,7 +45,7 @@ const items = [...testimonials, ...testimonials, ...testimonials]
 function TestimonialCard({ id, name, handle, plan, text, rating }: typeof testimonials[0]) {
   return (
     <div className="glow-card flex-shrink-0 w-[340px] flex flex-col gap-4 border border-[var(--border)] bg-[var(--surface)] p-5"
-         style={{ borderRadius: 'var(--r-md)' }}>
+         style={{ borderRadius: 'var(--r-lg)' }}>
       <div className="flex items-center justify-between pb-3 border-b border-[var(--border)]">
         <span className="text-[12px] text-[var(--muted)] tracking-[0.1em]">{id}</span>
         <div className="flex gap-0.5">

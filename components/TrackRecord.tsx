@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import React from 'react'
 import { Alert02Icon, Download01Icon, File01Icon, CpuIcon, BarChartIcon, Shield01Icon, Clock01Icon, ArrowRight01Icon } from 'hugeicons-react'
 import { useReveal } from '@/hooks/useReveal'
@@ -21,10 +21,10 @@ const statBorder = [
 const DRIVE_FOLDER = 'https://drive.google.com/drive/folders/1OCQATdnrRHqapOfOrqVhlA5qoIPfUG_F?usp=drive_link'
 
 const backtests = [
-  { deposit: '$200',   label: 'Initial Deposit $200',   file: DRIVE_FOLDER, period: '2020 – 2025' },
-  { deposit: '$500',   label: 'Initial Deposit $500',   file: DRIVE_FOLDER, period: '2020 – 2025' },
-  { deposit: '$1,000', label: 'Initial Deposit $1,000', file: DRIVE_FOLDER, period: '2020 – 2025' },
-  { deposit: '$5,000', label: 'Initial Deposit $5,000', file: DRIVE_FOLDER, period: '2020 – 2025' },
+  { deposit: '$200',   label: 'Initial Deposit $200',   file: DRIVE_FOLDER, period: '2020 — 2025' },
+  { deposit: '$500',   label: 'Initial Deposit $500',   file: DRIVE_FOLDER, period: '2020 — 2025' },
+  { deposit: '$1,000', label: 'Initial Deposit $1,000', file: DRIVE_FOLDER, period: '2020 — 2025' },
+  { deposit: '$5,000', label: 'Initial Deposit $5,000', file: DRIVE_FOLDER, period: '2020 — 2025' },
 ]
 
 export function TrackRecord() {
@@ -44,12 +44,12 @@ export function TrackRecord() {
             </h2>
           </div>
           <a
-            href="https://www.myfxbook.com/members/ouroalgo/ouro-exponent-algo-oea/12030217"
+            href="https://www.myfxbook.com/members/ouroalgo/ouro-exponent-algo-oea/12042613"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary inline-flex"
           >
-            Lihat di Myfxbook →
+            Lihat di Myfxbook â†’
           </a>
         </div>
 
@@ -83,7 +83,7 @@ export function TrackRecord() {
                   Pelajari Lebih Lanjut <ArrowRight01Icon size={12} />
                 </a>
                 <a
-                  href="https://www.myfxbook.com/members/ouroalgo/ouro-exponent-algo-oea/12030217"
+                  href="https://www.myfxbook.com/members/ouroalgo/ouro-exponent-algo-oea/12042613"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary inline-flex"
@@ -170,3 +170,4 @@ export function TrackRecord() {
     </section>
   )
 }
+

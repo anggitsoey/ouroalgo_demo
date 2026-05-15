@@ -15,6 +15,8 @@ const products = [
     thumbnail: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=700&q=80', // dark code monitor
     imgFit: 'cover' as const,
     imgPosition: 'center',
+    comingSoon: false,
+    live: true,
   },
   {
     icon: Wifi01Icon,
@@ -27,6 +29,7 @@ const products = [
     thumbnail: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=700&q=80', // white-toned trading / market data
     imgFit: 'cover' as const,
     imgPosition: 'center',
+    comingSoon: true,
   },
   {
     icon: Mortarboard01Icon,
@@ -39,6 +42,7 @@ const products = [
     thumbnail: 'https://images.unsplash.com/photo-1650661926447-9efb2610f64c?w=700&q=80',
     imgFit: 'cover' as const,
     imgPosition: 'center',
+    comingSoon: true,
   },
   {
     icon: TestTube01Icon,
@@ -51,6 +55,7 @@ const products = [
     thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80', // data analytics dashboard
     imgFit: 'cover' as const,
     imgPosition: 'center',
+    comingSoon: true,
   },
 ]
 
@@ -77,7 +82,7 @@ export function Products() {
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 gap-3">
-          {products.map(({ icon: Icon, code, tag, title, desc, features, href, thumbnail, imgFit, imgPosition }) => (
+          {products.map(({ icon: Icon, code, tag, title, desc, features, href, thumbnail, imgFit, imgPosition, comingSoon, live }) => (
             <div key={code} className="card glow-card group flex flex-col relative overflow-hidden">
 
               {/* Background thumbnail — right side with fade */}
@@ -107,7 +112,17 @@ export function Products() {
                   </div>
                   <span className="text-[12px] text-[var(--muted)] tracking-[0.1em] font-medium">[{code}]</span>
                 </div>
-                <span className="chip">{tag}</span>
+                <div className="flex items-center gap-2">
+                  {live && (
+                    <span className="flex items-center gap-1.5 chip">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] animate-pulse flex-shrink-0" />
+                      Live
+                    </span>
+                  )}
+                  {comingSoon && (
+                    <span className="chip">Coming Soon</span>
+                  )}
+                </div>
               </div>
 
               <h3 className="text-[15px] font-medium text-[var(--text)] mb-2 tracking-[-0.01em]">{title}</h3>
